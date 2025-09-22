@@ -92,3 +92,37 @@
     }
   }
 }
+
+/**
+ * Rounded Tab Style
+ * Modern rounded tabs with subtle shadows
+ */
+.tf-tabs--rounded {
+  @extend %tf-tabs-base;
+
+  .nav-tab-wrapper {
+    gap: 2px;
+    padding: 10px 0 !important;
+    background: var(--tf-tabs-background-alt);
+    border-radius: var(--tf-tabs-border-radius);
+
+    .nav-tab {
+      border-radius: 20px;
+      background: transparent;
+      border: 1px solid transparent;
+      padding: 4px 15px;
+
+      &:hover {
+        background: var(--tf-tabs-background);
+        color: var(--tf-tabs-text-color);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      &.nav-tab-active {
+        background: var(--tf-tabs-primary-color);
+        color: #fff;
+        box-shadow: 0 2px 8px rgba(34, 113, 177, 0.3);
+      }
+    }
+  }
+}
