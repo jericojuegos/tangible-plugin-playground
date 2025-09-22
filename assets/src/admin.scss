@@ -16,5 +16,5 @@
 }
 
 .tangible-plugin-settings-page.tangible-plugin-playground-settings {
-  @extend .tf-tabs--classic;
+  @extend .tf-tabs--default; // Options: default, classic
 }

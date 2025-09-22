@@ -59,3 +59,36 @@
     }
   }
 }
+
+/**
+ * Default Tab Style - Current Tangible Framework Style
+ * 
+ * This replicates the current framework's underline tab style
+ * that overrides WordPress defaults
+ */
+.tf-tabs--default {
+  @extend %tf-tabs-base;
+  
+  .nav-tab-wrapper {
+    padding-left: 0px !important;
+    padding-top: 4px !important;
+    background: #fff;
+    border: 1px solid #c3c4c7 !important;
+    
+    .nav-tab {
+      background: none;
+      border: none;
+      border-bottom: 4px solid transparent;
+      padding: 8px 10px;
+      
+      &:active,
+      &.nav-tab-active {
+        border-bottom: 4px solid var(--tt-admin-accent);
+      }
+      
+      &:focus {
+        box-shadow: none;
+      }
+    }
+  }
+}
