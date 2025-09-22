@@ -1,0 +1,61 @@
+/**
+ * Tab Style Variations
+ * 
+ * These are reusable tab styles that can be applied to any plugin
+ * using the Tangible Framework. Each style extends the base component
+ * and adds its own visual treatment.
+ * 
+ * Usage:
+ * .my-plugin-settings-page {
+ *   @extend .tf-tabs--rounded;
+ * }
+ */
+
+
+/**
+ * Classic Tab Style - WordPress Default Admin Tabs
+ * 
+ * Restores the original WordPress admin tab styling (bordered tabs)
+ */
+.tf-tabs--classic {
+  @extend %tf-tabs-base;
+  
+  .nav-tab-wrapper {
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid #c3c4c7 !important;
+    gap: 0 !important;
+    
+    .nav-tab {
+      // WordPress classic tab styling
+      background: #dcdcde;
+      border: 1px solid #c3c4c7;
+      border-bottom: none;
+      padding: 5px 10px;
+      margin-right: 2px;
+      
+      &:hover {
+        background: #fff;
+        color: #3c434a;
+      }
+      
+      &.nav-tab-active {
+        background: #f0f0f1;
+        margin-bottom: -1px;
+        position: relative;
+        z-index: 1;
+        
+        &:hover {
+          background: #f0f0f1;
+          color: #000;
+        }
+      }
+      
+      &:focus {
+        box-shadow: 0 0 0 1px #007cba;
+        outline: 2px solid transparent;
+      }
+    }
+  }
+}

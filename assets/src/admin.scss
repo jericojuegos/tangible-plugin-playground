@@ -1,5 +1,9 @@
 // For plugin settings page
 
+// Import the tab style system
+@import 'tabs/tabs-base';
+@import 'tabs/tabs-styles';
+
 .plugin-title {
   position: relative;
   margin-bottom: 16px;
@@ -9,4 +13,8 @@
   padding: 0;
   margin-right: .25rem;
   margin-bottom: -12px;
+}
+
+.tangible-plugin-settings-page.tangible-plugin-playground-settings {
+  @extend .tf-tabs--classic;
 }

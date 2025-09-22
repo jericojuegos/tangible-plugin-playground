@@ -1,0 +1,63 @@
+/**
+ * Base Tab Component
+ * 
+ * This provides the foundational styling for all tab variants.
+ * It works as an extension layer on top of the Tangible Framework's
+ * existing tab implementation.
+ * 
+ * Usage:
+ * .my-plugin-tabs {
+ *   @extend %tf-tabs-base;
+ * }
+ */
+
+%tf-tabs-base {
+  .nav-tab-wrapper {
+    display: flex;
+    align-items: stretch;
+    margin-bottom: 0;
+    
+    .nav-tab {
+      margin-right: 0;
+      margin-bottom: 0;
+      padding: 12px 20px;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      
+      &:hover {
+        text-decoration: none;
+      }
+      
+      &:focus {
+        box-shadow: none !important;
+        outline: none;
+      }
+      
+      &.nav-tab-active {
+        font-weight: 600;
+      }
+    }
+  }
+  
+  // Ensure the tab content area has proper spacing
+  .tangible-plugin-settings-section-wrapper {
+    margin-top: 0;
+  }
+}
+
+/**
+ * Base variables for consistent theming
+ */
+:root {
+  --tf-tabs-primary-color: var(--tt-admin-accent, #2271b1);
+  --tf-tabs-primary-hover: var(--tt-admin-accent-alt, #135e96);
+  --tf-tabs-text-color: #1e1e1e;
+  --tf-tabs-text-muted: #757575;
+  --tf-tabs-border-color: #c3c4c7;
+  --tf-tabs-background: #fff;
+  --tf-tabs-background-alt: #f6f7f7;
+  --tf-tabs-border-radius: 4px;
+  --tf-tabs-spacing: 12px;
+}
