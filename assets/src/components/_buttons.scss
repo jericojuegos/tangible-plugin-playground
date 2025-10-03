@@ -1,0 +1,387 @@
+/**
+ * Button Component
+ * 
+ * Comprehensive button system with multiple variants, sizes, and states.
+ */
+
+@use "../base/mixins" as *;
+
+// ============================================================================
+// BASE BUTTON
+// ============================================================================
+
+.tss-btn {
+  @include button-base();
+  
+  // Icons in buttons
+  .tss-icon {
+    margin-right: var(--tss-spacing-xs);
+    
+    &:last-child {
+      margin-right: 0;
+      margin-left: var(--tss-spacing-xs);
+    }
+    
+    &:only-child {
+      margin: 0;
+    }
+  }
+}
+
+// ============================================================================
+// BUTTON VARIANTS
+// ============================================================================
+
+// Primary button
+.tss-btn--primary {
+  @include button-variant(
+    var(--tss-color-primary),
+    var(--tss-color-primary),
+    var(--tss-color-white),
+    var(--tss-color-primary-dark),
+    var(--tss-color-primary-dark)
+  );
+}
+
+// Secondary button
+.tss-btn--secondary {
+  @include button-variant(
+    var(--tss-color-secondary),
+    var(--tss-color-secondary),
+    var(--tss-color-white),
+    var(--tss-color-secondary-dark),
+    var(--tss-color-secondary-dark)
+  );
+}
+
+// Success button
+.tss-btn--success {
+  @include button-variant(
+    var(--tss-color-success),
+    var(--tss-color-success),
+    var(--tss-color-white),
+    var(--tss-color-success-dark),
+    var(--tss-color-success-dark)
+  );
+}
+
+// Warning button
+.tss-btn--warning {
+  @include button-variant(
+    var(--tss-color-warning),
+    var(--tss-color-warning),
+    var(--tss-color-white),
+    var(--tss-color-warning-dark),
+    var(--tss-color-warning-dark)
+  );
+}
+
+// Danger button
+.tss-btn--danger {
+  @include button-variant(
+    var(--tss-color-error),
+    var(--tss-color-error),
+    var(--tss-color-white),
+    var(--tss-color-error-dark),
+    var(--tss-color-error-dark)
+  );
+}
+
+// Outline variants
+.tss-btn--outline-primary {
+  color: var(--tss-color-primary);
+  background-color: transparent;
+  border-color: var(--tss-color-primary);
+  
+  &:hover {
+    color: var(--tss-color-white);
+    background-color: var(--tss-color-primary);
+    border-color: var(--tss-color-primary);
+  }
+}
+
+.tss-btn--outline-secondary {
+  color: var(--tss-color-secondary);
+  background-color: transparent;
+  border-color: var(--tss-color-secondary);
+  
+  &:hover {
+    color: var(--tss-color-white);
+    background-color: var(--tss-color-secondary);
+    border-color: var(--tss-color-secondary);
+  }
+}
+
+.tss-btn--outline-success {
+  color: var(--tss-color-success);
+  background-color: transparent;
+  border-color: var(--tss-color-success);
+  
+  &:hover {
+    color: var(--tss-color-white);
+    background-color: var(--tss-color-success);
+    border-color: var(--tss-color-success);
+  }
+}
+
+.tss-btn--outline-warning {
+  color: var(--tss-color-warning);
+  background-color: transparent;
+  border-color: var(--tss-color-warning);
+  
+  &:hover {
+    color: var(--tss-color-white);
+    background-color: var(--tss-color-warning);
+    border-color: var(--tss-color-warning);
+  }
+}
+
+.tss-btn--outline-danger {
+  color: var(--tss-color-error);
+  background-color: transparent;
+  border-color: var(--tss-color-error);
+  
+  &:hover {
+    color: var(--tss-color-white);
+    background-color: var(--tss-color-error);
+    border-color: var(--tss-color-error);
+  }
+}
+
+// Ghost variants (no border)
+.tss-btn--ghost {
+  color: var(--tss-color-text);
+  background-color: transparent;
+  border-color: transparent;
+  
+  &:hover {
+    background-color: var(--tss-color-bg-alt);
+  }
+}
+
+.tss-btn--ghost-primary {
+  color: var(--tss-color-primary);
+  background-color: transparent;
+  border-color: transparent;
+  
+  &:hover {
+    background-color: rgba(34, 113, 177, 0.1);
+  }
+}
+
+// ============================================================================
+// BUTTON SIZES
+// ============================================================================
+
+.tss-btn--xs {
+  @include button-size(
+    var(--tss-spacing-xs),
+    var(--tss-spacing-sm),
+    var(--tss-font-size-xs),
+    var(--tss-radius-sm)
+  );
+}
+
+.tss-btn--sm {
+  @include button-size(
+    var(--tss-spacing-sm),
+    var(--tss-spacing-md),
+    var(--tss-font-size-sm),
+    var(--tss-radius-sm)
+  );
+}
+
+.tss-btn--lg {
+  @include button-size(
+    var(--tss-spacing-md),
+    var(--tss-spacing-lg),
+    var(--tss-font-size-lg),
+    var(--tss-radius-md)
+  );
+}
+
+.tss-btn--xl {
+  @include button-size(
+    var(--tss-spacing-lg),
+    var(--tss-spacing-xl),
+    var(--tss-font-size-xl),
+    var(--tss-radius-lg)
+  );
+}
+
+// ============================================================================
+// BUTTON STATES
+// ============================================================================
+
+.tss-btn--loading {
+  position: relative;
+  pointer-events: none;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1rem;
+    height: 1rem;
+    margin: -0.5rem 0 0 -0.5rem;
+    border: 2px solid transparent;
+    border-top-color: currentColor;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  .tss-btn__text {
+    opacity: 0;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.tss-btn--active {
+  background-color: var(--tss-color-primary-dark);
+  border-color: var(--tss-color-primary-dark);
+  
+  &:hover {
+    background-color: var(--tss-color-primary-dark);
+    border-color: var(--tss-color-primary-dark);
+  }
+}
+
+// ============================================================================
+// BUTTON GROUPS
+// ============================================================================
+
+.tss-btn-group {
+  display: inline-flex;
+  vertical-align: middle;
+  
+  .tss-btn {
+    position: relative;
+    flex: 1 1 auto;
+    
+    &:not(:first-child) {
+      margin-left: -1px;
+    }
+    
+    &:not(:last-child):not(.dropdown-toggle) {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    
+    &:not(:first-child) {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    
+    &:hover,
+    &:focus,
+    &:active {
+      z-index: 1;
+    }
+  }
+}
+
+// Vertical button group
+.tss-btn-group--vertical {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  
+  .tss-btn {
+    width: 100%;
+    
+    &:not(:first-child) {
+      margin-top: -1px;
+      margin-left: 0;
+    }
+    
+    &:not(:last-child) {
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    
+    &:not(:first-child) {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+  }
+}
+
+// ============================================================================
+// SPECIAL BUTTON TYPES
+// ============================================================================
+
+// Icon-only buttons
+.tss-btn--icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  
+  &.tss-btn--sm {
+    width: 2rem;
+    height: 2rem;
+  }
+  
+  &.tss-btn--lg {
+    width: 3rem;
+    height: 3rem;
+  }
+  
+  .tss-icon {
+    margin: 0;
+  }
+}
+
+// Block buttons (full width)
+.tss-btn--block {
+  display: flex;
+  width: 100%;
+}
+
+// Floating action button
+.tss-btn--fab {
+  position: fixed;
+  bottom: var(--tss-spacing-xl);
+  right: var(--tss-spacing-xl);
+  width: 3.5rem;
+  height: 3.5rem;
+  padding: 0;
+  border-radius: 50%;
+  box-shadow: var(--tss-shadow-lg);
+  z-index: var(--tss-z-index-fixed);
+  
+  &:hover {
+    @include hover-lift(6px);
+    box-shadow: var(--tss-shadow-xl);
+  }
+  
+  .tss-icon {
+    margin: 0;
+  }
+}
+
+// Link-styled buttons
+.tss-btn--link {
+  color: var(--tss-color-primary);
+  background-color: transparent;
+  border-color: transparent;
+  text-decoration: underline;
+  
+  &:hover {
+    color: var(--tss-color-primary-dark);
+    background-color: transparent;
+    border-color: transparent;
+    text-decoration: underline;
+  }
+  
+  &:focus {
+    box-shadow: none;
+    outline: 2px solid var(--tss-color-primary);
+    outline-offset: 2px;
+  }
+}

@@ -1,12 +1,74 @@
-// For plugin settings page
+/**
+ * Admin Styles for Tangible Plugin Playground
+ * 
+ * Main entry point for all admin interface styling.
+ * Uses modular SCSS architecture with component-based organization.
+ */
 
-// Import the tab style system
-@import 'tabs/tabs-base';
-@import 'tabs/tabs-styles';
+// ============================================================================
+// BASE FOUNDATION
+// ============================================================================
 
+@use 'base/variables';
+@use 'base/reset';
+@use 'base/typography';
+@use 'base/mixins';
+
+// ============================================================================
+// LAYOUT COMPONENTS
+// ============================================================================
+
+@use 'layout/header';
+@use 'layout/sidebar';
+@use 'layout/footer';
+
+// ============================================================================
+// UI COMPONENTS
+// ============================================================================
+
+@use 'components/tabs';
+@use 'components/buttons';
+@use 'components/forms';
+@use 'components/cards';
+@use 'components/modals';
+@use 'components/tables';
+@use 'components/alerts';
+@use 'components/progress';
+@use 'components/navigation';
+
+// ============================================================================
+// UTILITY CLASSES
+// ============================================================================
+
+@use 'utilities/grid';
+@use 'utilities/spacing';
+@use 'utilities/display';
+@use 'utilities/colors';
+
+// ============================================================================
+// THEME SYSTEMS
+// ============================================================================
+
+@use 'themes/default';
+@use 'themes/classic';
+@use 'themes/rounded';
+
+// ============================================================================
+// FRAMEWORK OVERRIDES
+// ============================================================================
+
+@use 'overrides/framework-overrides';
+
+// ============================================================================
+// PLUGIN-SPECIFIC STYLES
+// ============================================================================
+
+// Legacy plugin styles (backwards compatibility)
 .plugin-title {
   position: relative;
   margin-bottom: 16px;
+  @extend .tss-heading-xl;
+  color: var(--tss-color-primary);
 }
 
 .plugin-logo {
@@ -15,6 +77,297 @@
   margin-bottom: -12px;
 }
 
+// Main settings page - apply rounded theme for backwards compatibility
 .tangible-plugin-settings-page.tangible-plugin-playground-settings {
-  @extend .tf-tabs--rounded; // Options: default, classic, rounded
+  @extend .tss-theme--rounded;
+  
+  // Use rounded tabs by default
+  .tss-tabs {
+    @extend .tss-tabs--rounded;
+  }
+}
+
+// Main admin page container
+.tangible-plugin-playground {
+  // Apply default theme
+  @extend .tss-theme--default;
+  
+  // Base container styling
+  padding: var(--tss-spacing-5);
+  font-family: var(--tss-font-family-base);
+  color: var(--tss-color-text);
+  background-color: var(--tss-color-bg);
+  min-height: 100vh;
+  
+  // Admin page header
+  .admin-header {
+    @extend .tss-layout-header;
+    margin-bottom: var(--tss-spacing-6);
+    
+    h1 {
+      @extend .tss-heading-xl;
+      margin-bottom: var(--tss-spacing-2);
+      color: var(--tss-color-primary);
+    }
+    
+    .admin-subtitle {
+      @extend .tss-text-muted;
+      font-size: var(--tss-font-size-lg);
+    }
+  }
+  
+  // Main content area
+  .admin-content {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: var(--tss-spacing-6);
+    
+    @media (max-width: 1024px) {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  // Sidebar navigation
+  .admin-sidebar {
+    @extend .tss-layout-sidebar;
+  }
+  
+  // Main content panel
+  .admin-main {
+    background: var(--tss-color-white);
+    border-radius: var(--tss-radius-lg);
+    box-shadow: var(--tss-shadow-sm);
+    padding: var(--tss-spacing-6);
+    
+    // Tab container for admin pages
+    .admin-tabs-container {
+      margin-bottom: var(--tss-spacing-6);
+      
+      .tss-tabs {
+        border-bottom: 1px solid var(--tss-color-border-light);
+      }
+    }
+    
+    // Content sections
+    .admin-section {
+      margin-bottom: var(--tss-spacing-6);
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+      
+      .section-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: var(--tss-spacing-4);
+        
+        h2 {
+          @extend .tss-heading-lg;
+          margin: 0;
+        }
+        
+        .section-actions {
+          display: flex;
+          gap: var(--tss-spacing-2);
+        }
+      }
+      
+      .section-content {
+        .tss-card + .tss-card {
+          margin-top: var(--tss-spacing-4);
+        }
+      }
+    }
+  }
+  
+  // Form layouts
+  .admin-form {
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--tss-spacing-4);
+      margin-bottom: var(--tss-spacing-4);
+      
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+      }
+      
+      &.full-width {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .form-actions {
+      display: flex;
+      gap: var(--tss-spacing-3);
+      margin-top: var(--tss-spacing-6);
+      padding-top: var(--tss-spacing-4);
+      border-top: 1px solid var(--tss-color-border-light);
+      
+      .tss-btn {
+        min-width: 120px;
+      }
+    }
+  }
+  
+  // Data tables
+  .admin-table-container {
+    .tss-table {
+      margin-bottom: var(--tss-spacing-4);
+    }
+    
+    .table-actions {
+      display: flex;
+      justify-content: between;
+      align-items: center;
+      margin-bottom: var(--tss-spacing-3);
+      
+      .table-search {
+        flex: 1;
+        max-width: 300px;
+      }
+      
+      .table-filters {
+        display: flex;
+        gap: var(--tss-spacing-2);
+      }
+    }
+    
+    .table-pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: var(--tss-spacing-4);
+    }
+  }
+  
+  // Status indicators
+  .status-indicator {
+    &.status-active {
+      @extend .tss-bg-success-light;
+      @extend .tss-text-success;
+      @extend .tss-rounded;
+      padding: var(--tss-spacing-1) var(--tss-spacing-2);
+      font-size: var(--tss-font-size-xs);
+      font-weight: var(--tss-font-weight-medium);
+    }
+    
+    &.status-inactive {
+      @extend .tss-bg-gray-100;
+      @extend .tss-text-gray-600;
+      @extend .tss-rounded;
+      padding: var(--tss-spacing-1) var(--tss-spacing-2);
+      font-size: var(--tss-font-size-xs);
+      font-weight: var(--tss-font-weight-medium);
+    }
+    
+    &.status-error {
+      @extend .tss-bg-error-light;
+      @extend .tss-text-error;
+      @extend .tss-rounded;
+      padding: var(--tss-spacing-1) var(--tss-spacing-2);
+      font-size: var(--tss-font-size-xs);
+      font-weight: var(--tss-font-weight-medium);
+    }
+  }
+  
+  // Loading states
+  .loading-overlay {
+    position: relative;
+    
+    &.is-loading {
+      pointer-events: none;
+      
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(2px);
+        z-index: 10;
+      }
+      
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 32px;
+        height: 32px;
+        margin: -16px 0 0 -16px;
+        border: 3px solid var(--tss-color-gray-200);
+        border-top-color: var(--tss-color-primary);
+        border-radius: 50%;
+        animation: tss-spin 1s linear infinite;
+        z-index: 11;
+      }
+    }
+  }
+}
+
+// ============================================================================
+// ANIMATIONS
+// ============================================================================
+
+@keyframes tss-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes tss-fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes tss-slide-down {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+// ============================================================================
+// RESPONSIVE BEHAVIOR
+// ============================================================================
+
+// Mobile-first responsive adjustments
+@media (max-width: 768px) {
+  .tangible-plugin-playground {
+    padding: var(--tss-spacing-3);
+    
+    .admin-content {
+      gap: var(--tss-spacing-4);
+    }
+    
+    .admin-main {
+      padding: var(--tss-spacing-4);
+    }
+    
+    .admin-header h1 {
+      font-size: var(--tss-font-size-2xl);
+    }
+  }
+}
+
+// Tablet adjustments
+@media (min-width: 769px) and (max-width: 1024px) {
+  .tangible-plugin-playground {
+    .admin-content {
+      grid-template-columns: 200px 1fr;
+    }
+  }
+}
+
+// Large screen optimizations
+@media (min-width: 1400px) {
+  .tangible-plugin-playground {
+    .admin-content {
+      grid-template-columns: 300px 1fr;
+      gap: var(--tss-spacing-8);
+    }
+    
+    .admin-main {
+      padding: var(--tss-spacing-8);
+    }
+  }
 }

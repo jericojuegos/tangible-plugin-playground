@@ -1,0 +1,106 @@
+/**
+ * Rounded Theme
+ * 
+ * Modern theme with generous border radius and soft shadows.
+ */
+
+// ============================================================================
+// ROUNDED THEME VARIABLES
+// ============================================================================
+
+:root {
+  // Rounded theme uses more vibrant colors
+  --tss-theme-primary: #3b82f6;
+  --tss-theme-primary-dark: #2563eb;
+  --tss-theme-secondary: #6b7280;
+  --tss-theme-success: #10b981;
+  --tss-theme-warning: #f59e0b;
+  --tss-theme-error: #ef4444;
+  
+  // Rounded styling preferences
+  --tss-theme-button-radius: var(--tss-radius-lg);
+  --tss-theme-card-shadow: var(--tss-shadow-md);
+  --tss-theme-input-focus-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+// ============================================================================
+// ROUNDED THEME COMPONENT OVERRIDES
+// ============================================================================
+
+.tss-theme--rounded {
+  // Override color variables for rounded theme
+  --tss-color-primary: var(--tss-theme-primary);
+  --tss-color-primary-dark: var(--tss-theme-primary-dark);
+  --tss-color-secondary: var(--tss-theme-secondary);
+  --tss-color-success: var(--tss-theme-success);
+  --tss-color-warning: var(--tss-theme-warning);
+  --tss-color-error: var(--tss-theme-error);
+  
+  // Buttons have large border radius
+  .tss-btn {
+    border-radius: var(--tss-theme-button-radius);
+    font-weight: var(--tss-font-weight-medium);
+  }
+  
+  // Cards have elevated shadows and rounded corners
+  .tss-card {
+    box-shadow: var(--tss-theme-card-shadow);
+    border-radius: var(--tss-radius-lg);
+    border: none;
+    
+    &:hover {
+      box-shadow: var(--tss-shadow-lg);
+    }
+  }
+  
+  // Form controls have rounded corners and colorful focus
+  .tss-form__control {
+    border-radius: var(--tss-radius-md);
+    
+    &:focus {
+      box-shadow: var(--tss-theme-input-focus-shadow);
+    }
+  }
+  
+  // Select dropdowns are rounded
+  .tss-form__select {
+    border-radius: var(--tss-radius-md);
+  }
+  
+  // Tabs use rounded styling
+  .tss-tabs {
+    @extend .tss-tabs--rounded;
+  }
+  
+  // Tables have rounded corners
+  .tss-table {
+    border-radius: var(--tss-radius-lg);
+    overflow: hidden;
+    
+    th {
+      background-color: var(--tss-color-bg-alt);
+    }
+  }
+  
+  // Modals are highly rounded
+  .tss-modal__content {
+    border-radius: var(--tss-radius-xl);
+    border: none;
+    box-shadow: var(--tss-shadow-xl);
+  }
+  
+  // Input groups have rounded styling
+  .tss-input-group {
+    border-radius: var(--tss-radius-md);
+    overflow: hidden;
+  }
+  
+  // Progress bars are rounded
+  .tss-progress {
+    border-radius: var(--tss-radius-full);
+    
+    .tss-progress__bar {
+      border-radius: var(--tss-radius-full);
+    }
+  }
+}

@@ -1,0 +1,240 @@
+/**
+ * Modal Component
+ * 
+ * Flexible modal/dialog system with backdrop, animations, and multiple sizes.
+ */
+
+@use "../base/mixins" as *;
+
+// ============================================================================
+// MODAL BASE
+// ============================================================================
+
+.tss-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--tss-z-index-modal);
+  display: none;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  outline: 0;
+  
+  &.show {
+    display: block;
+  }
+  
+  &__backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: var(--tss-z-index-modal-backdrop);
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+  }
+  
+  &__dialog {
+    position: relative;
+    width: auto;
+    margin: var(--tss-spacing-lg);
+    pointer-events: none;
+    
+    .tss-modal.show & {
+      animation: modal-fade-in var(--tss-transition-base) var(--tss-ease-out);
+    }
+  }
+  
+  &__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: var(--tss-color-bg);
+    background-clip: padding-box;
+    border: var(--tss-border-width) solid var(--tss-color-border);
+    border-radius: var(--tss-radius-lg);
+    box-shadow: var(--tss-shadow-xl);
+    outline: 0;
+  }
+  
+  &__header {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--tss-spacing-lg);
+    border-bottom: var(--tss-border-width) solid var(--tss-color-border);
+    border-top-left-radius: calc(var(--tss-radius-lg) - var(--tss-border-width));
+    border-top-right-radius: calc(var(--tss-radius-lg) - var(--tss-border-width));
+  }
+  
+  &__title {
+    margin-bottom: 0;
+    line-height: var(--tss-line-height-normal);
+    font-size: var(--tss-font-size-xl);
+    font-weight: var(--tss-font-weight-semibold);
+  }
+  
+  &__close {
+    padding: var(--tss-spacing-sm);
+    margin: calc(var(--tss-spacing-sm) * -1) calc(var(--tss-spacing-sm) * -1) calc(var(--tss-spacing-sm) * -1) auto;
+    background: transparent;
+    border: 0;
+    border-radius: var(--tss-radius-base);
+    cursor: pointer;
+    color: var(--tss-color-text-muted);
+    font-size: var(--tss-font-size-lg);
+    transition: color var(--tss-transition-fast) var(--tss-ease-in-out);
+    
+    &:hover {
+      color: var(--tss-color-text);
+    }
+    
+    &:focus {
+      outline: 2px solid var(--tss-color-primary);
+      outline-offset: 2px;
+    }
+  }
+  
+  &__body {
+    position: relative;
+    flex: 1 1 auto;
+    padding: var(--tss-spacing-lg);
+  }
+  
+  &__footer {
+    display: flex;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--tss-spacing-sm);
+    padding: var(--tss-spacing-base) var(--tss-spacing-lg);
+    border-top: var(--tss-border-width) solid var(--tss-color-border);
+    border-bottom-right-radius: calc(var(--tss-radius-lg) - var(--tss-border-width));
+    border-bottom-left-radius: calc(var(--tss-radius-lg) - var(--tss-border-width));
+  }
+}
+
+// ============================================================================
+// MODAL SIZES
+// ============================================================================
+
+.tss-modal--sm {
+  .tss-modal__dialog {
+    max-width: 300px;
+    margin: var(--tss-spacing-xl) auto;
+  }
+}
+
+.tss-modal--lg {
+  .tss-modal__dialog {
+    max-width: 800px;
+    margin: var(--tss-spacing-xl) auto;
+  }
+}
+
+.tss-modal--xl {
+  .tss-modal__dialog {
+    max-width: 1140px;
+    margin: var(--tss-spacing-xl) auto;
+  }
+}
+
+.tss-modal--fullscreen {
+  .tss-modal__dialog {
+    width: 100vw;
+    max-width: none;
+    height: 100%;
+    margin: 0;
+    
+    .tss-modal__content {
+      height: 100%;
+      border: 0;
+      border-radius: 0;
+    }
+  }
+}
+
+// ============================================================================
+// MODAL ANIMATIONS
+// ============================================================================
+
+@keyframes modal-fade-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -50px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+// ============================================================================
+// MODAL VARIANTS
+// ============================================================================
+
+.tss-modal--centered {
+  .tss-modal__dialog {
+    display: flex;
+    align-items: center;
+    min-height: calc(100% - var(--tss-spacing-xl) * 2);
+  }
+}
+
+.tss-modal--scrollable {
+  .tss-modal__dialog {
+    height: calc(100% - var(--tss-spacing-xl) * 2);
+    
+    .tss-modal__content {
+      max-height: 100%;
+      overflow: hidden;
+    }
+    
+    .tss-modal__body {
+      overflow-y: auto;
+    }
+  }
+}
+
+// ============================================================================
+// RESPONSIVE MODALS
+// ============================================================================
+
+@include media-up(sm) {
+  .tss-modal__dialog {
+    max-width: 500px;
+    margin: var(--tss-spacing-xl) auto;
+  }
+  
+  .tss-modal--sm .tss-modal__dialog {
+    max-width: 300px;
+  }
+}
+
+@include media-down(sm) {
+  .tss-modal__dialog {
+    margin: var(--tss-spacing-sm);
+  }
+  
+  .tss-modal--fullscreen-sm-down {
+    .tss-modal__dialog {
+      width: 100vw;
+      max-width: none;
+      height: 100%;
+      margin: 0;
+      
+      .tss-modal__content {
+        height: 100%;
+        border: 0;
+        border-radius: 0;
+      }
+    }
+  }
+}

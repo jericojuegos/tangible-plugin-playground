@@ -1,0 +1,205 @@
+/**
+ * Base Variables
+ * 
+ * Core design tokens for colors, typography, spacing, and other design elements.
+ * These variables are used throughout the entire design system.
+ */
+
+// ============================================================================
+// COLORS
+// ============================================================================
+
+// Brand Colors
+:root {
+  // Primary colors
+  --tss-color-primary: #2271b1;
+  --tss-color-primary-dark: #135e96;
+  --tss-color-primary-light: #4f94d4;
+  
+  // Secondary colors
+  --tss-color-secondary: #50575e;
+  --tss-color-secondary-dark: #3c434a;
+  --tss-color-secondary-light: #6c7781;
+  
+  // Success, Warning, Error
+  --tss-color-success: #00a32a;
+  --tss-color-success-dark: #007017;
+  --tss-color-success-light: #4ab866;
+  
+  --tss-color-warning: #dba617;
+  --tss-color-warning-dark: #b29400;
+  --tss-color-warning-light: #ffb900;
+  
+  --tss-color-error: #d63638;
+  --tss-color-error-dark: #b32d2e;
+  --tss-color-error-light: #f56e6e;
+  
+  // Neutral colors
+  --tss-color-white: #ffffff;
+  --tss-color-black: #000000;
+  --tss-color-gray-50: #f9f9f9;
+  --tss-color-gray-100: #f0f0f0;
+  --tss-color-gray-200: #e0e0e0;
+  --tss-color-gray-300: #c3c4c7;
+  --tss-color-gray-400: #a7aaad;
+  --tss-color-gray-500: #8c8f94;
+  --tss-color-gray-600: #646970;
+  --tss-color-gray-700: #50575e;
+  --tss-color-gray-800: #3c434a;
+  --tss-color-gray-900: #1e1e1e;
+  
+  // Text colors
+  --tss-color-text: #1e1e1e;
+  --tss-color-text-light: #646970;
+  --tss-color-text-muted: #8c8f94;
+  
+  // Background colors
+  --tss-color-bg: #ffffff;
+  --tss-color-bg-alt: #f6f7f7;
+  --tss-color-bg-gray: #f0f0f0;
+  
+  // Border colors
+  --tss-color-border: #c3c4c7;
+  --tss-color-border-light: #e0e0e0;
+  --tss-color-border-dark: #8c8f94;
+}
+
+// ============================================================================
+// TYPOGRAPHY
+// ============================================================================
+
+:root {
+  // Font families
+  --tss-font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  --tss-font-family-heading: var(--tss-font-family-base);
+  --tss-font-family-mono: Consolas, Monaco, "Courier New", monospace;
+  
+  // Font sizes
+  --tss-font-size-xs: 0.75rem;    // 12px
+  --tss-font-size-sm: 0.875rem;   // 14px
+  --tss-font-size-base: 1rem;     // 16px
+  --tss-font-size-lg: 1.125rem;   // 18px
+  --tss-font-size-xl: 1.25rem;    // 20px
+  --tss-font-size-2xl: 1.5rem;    // 24px
+  --tss-font-size-3xl: 1.875rem;  // 30px
+  --tss-font-size-4xl: 2.25rem;   // 36px
+  
+  // Font weights
+  --tss-font-weight-light: 300;
+  --tss-font-weight-normal: 400;
+  --tss-font-weight-medium: 500;
+  --tss-font-weight-semibold: 600;
+  --tss-font-weight-bold: 700;
+  
+  // Line heights
+  --tss-line-height-tight: 1.25;
+  --tss-line-height-normal: 1.5;
+  --tss-line-height-relaxed: 1.75;
+}
+
+// ============================================================================
+// SPACING
+// ============================================================================
+
+:root {
+  // Base spacing unit
+  --tss-spacing-unit: 0.25rem; // 4px
+  
+  // Spacing scale
+  --tss-spacing-xs: calc(var(--tss-spacing-unit) * 1);   // 4px
+  --tss-spacing-sm: calc(var(--tss-spacing-unit) * 2);   // 8px
+  --tss-spacing-md: calc(var(--tss-spacing-unit) * 3);   // 12px
+  --tss-spacing-base: calc(var(--tss-spacing-unit) * 4); // 16px
+  --tss-spacing-lg: calc(var(--tss-spacing-unit) * 6);   // 24px
+  --tss-spacing-xl: calc(var(--tss-spacing-unit) * 8);   // 32px
+  --tss-spacing-2xl: calc(var(--tss-spacing-unit) * 12); // 48px
+  --tss-spacing-3xl: calc(var(--tss-spacing-unit) * 16); // 64px
+  
+  // Component-specific spacing
+  --tss-spacing-field: var(--tss-spacing-md);
+  --tss-spacing-section: var(--tss-spacing-lg);
+  --tss-spacing-page: var(--tss-spacing-xl);
+}
+
+// ============================================================================
+// BORDERS & RADIUS
+// ============================================================================
+
+:root {
+  // Border radius
+  --tss-radius-none: 0;
+  --tss-radius-sm: 0.125rem;   // 2px
+  --tss-radius-base: 0.25rem;  // 4px
+  --tss-radius-md: 0.375rem;   // 6px
+  --tss-radius-lg: 0.5rem;     // 8px
+  --tss-radius-xl: 0.75rem;    // 12px
+  --tss-radius-full: 9999px;
+  
+  // Border widths
+  --tss-border-width: 1px;
+  --tss-border-width-thick: 2px;
+}
+
+// ============================================================================
+// SHADOWS
+// ============================================================================
+
+:root {
+  // Box shadows
+  --tss-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --tss-shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --tss-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --tss-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --tss-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  
+  // Focus shadow
+  --tss-shadow-focus: 0 0 0 3px rgba(34, 113, 177, 0.15);
+}
+
+// ============================================================================
+// GRID & LAYOUT
+// ============================================================================
+
+:root {
+  // Grid system
+  --tss-grid-columns: 12;
+  --tss-grid-gutter: 1rem;
+  --tss-container-max-width: 1320px;
+  
+  // Breakpoints
+  --tss-breakpoint-sm: 576px;
+  --tss-breakpoint-md: 768px;
+  --tss-breakpoint-lg: 992px;
+  --tss-breakpoint-xl: 1200px;
+  --tss-breakpoint-xxl: 1400px;
+}
+
+// ============================================================================
+// TRANSITIONS
+// ============================================================================
+
+:root {
+  // Transition durations
+  --tss-transition-fast: 0.15s;
+  --tss-transition-base: 0.2s;
+  --tss-transition-slow: 0.3s;
+  
+  // Transition easings
+  --tss-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --tss-ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --tss-ease-in: cubic-bezier(0.4, 0, 1, 1);
+}
+
+// ============================================================================
+// Z-INDEX SCALE
+// ============================================================================
+
+:root {
+  --tss-z-index-dropdown: 1000;
+  --tss-z-index-sticky: 1020;
+  --tss-z-index-fixed: 1030;
+  --tss-z-index-modal-backdrop: 1040;
+  --tss-z-index-modal: 1050;
+  --tss-z-index-popover: 1060;
+  --tss-z-index-tooltip: 1070;
+}

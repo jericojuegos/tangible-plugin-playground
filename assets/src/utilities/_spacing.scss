@@ -1,0 +1,297 @@
+/**
+ * Spacing Utilities
+ * 
+ * Bootstrap-like utility classes for margin and padding with responsive variants.
+ * Uses the spacing scale defined in variables.
+ */
+
+@use '../base/variables' as vars;
+
+// ============================================================================
+// SPACING UTILITY MIXINS
+// ============================================================================
+
+@mixin spacing-utilities($property, $prefix) {
+  @each $name, $value in vars.$spacing-scale {
+    .tss-#{$prefix}-#{$name} {
+      #{$property}: $value !important;
+    }
+  }
+  
+  // Auto spacing
+  .tss-#{$prefix}-auto {
+    #{$property}: auto !important;
+  }
+}
+
+@mixin spacing-directional-utilities($property, $prefix) {
+  @each $name, $value in vars.$spacing-scale {
+    // Top
+    .tss-#{$prefix}t-#{$name} {
+      #{$property}-top: $value !important;
+    }
+    
+    // Right
+    .tss-#{$prefix}r-#{$name} {
+      #{$property}-right: $value !important;
+    }
+    
+    // Bottom
+    .tss-#{$prefix}b-#{$name} {
+      #{$property}-bottom: $value !important;
+    }
+    
+    // Left
+    .tss-#{$prefix}l-#{$name} {
+      #{$property}-left: $value !important;
+    }
+    
+    // X-axis (horizontal)
+    .tss-#{$prefix}x-#{$name} {
+      #{$property}-left: $value !important;
+      #{$property}-right: $value !important;
+    }
+    
+    // Y-axis (vertical)
+    .tss-#{$prefix}y-#{$name} {
+      #{$property}-top: $value !important;
+      #{$property}-bottom: $value !important;
+    }
+  }
+  
+  // Auto directional spacing
+  .tss-#{$prefix}t-auto { #{$property}-top: auto !important; }
+  .tss-#{$prefix}r-auto { #{$property}-right: auto !important; }
+  .tss-#{$prefix}b-auto { #{$property}-bottom: auto !important; }
+  .tss-#{$prefix}l-auto { #{$property}-left: auto !important; }
+  .tss-#{$prefix}x-auto {
+    #{$property}-left: auto !important;
+    #{$property}-right: auto !important;
+  }
+  .tss-#{$prefix}y-auto {
+    #{$property}-top: auto !important;
+    #{$property}-bottom: auto !important;
+  }
+}
+
+// ============================================================================
+// MARGIN UTILITIES
+// ============================================================================
+
+// Base margin utilities
+@include spacing-utilities(margin, m);
+@include spacing-directional-utilities(margin, m);
+
+// Negative margins
+@each $name, $value in vars.$spacing-scale {
+  @if $name != '0' {
+    .tss-m-n#{$name} {
+      margin: calc(-1 * #{$value}) !important;
+    }
+    
+    .tss-mt-n#{$name} {
+      margin-top: calc(-1 * #{$value}) !important;
+    }
+    
+    .tss-mr-n#{$name} {
+      margin-right: calc(-1 * #{$value}) !important;
+    }
+    
+    .tss-mb-n#{$name} {
+      margin-bottom: calc(-1 * #{$value}) !important;
+    }
+    
+    .tss-ml-n#{$name} {
+      margin-left: calc(-1 * #{$value}) !important;
+    }
+    
+    .tss-mx-n#{$name} {
+      margin-left: calc(-1 * #{$value}) !important;
+      margin-right: calc(-1 * #{$value}) !important;
+    }
+    
+    .tss-my-n#{$name} {
+      margin-top: calc(-1 * #{$value}) !important;
+      margin-bottom: calc(-1 * #{$value}) !important;
+    }
+  }
+}
+
+// ============================================================================
+// PADDING UTILITIES
+// ============================================================================
+
+// Base padding utilities
+@include spacing-utilities(padding, p);
+@include spacing-directional-utilities(padding, p);
+
+// ============================================================================
+// RESPONSIVE SPACING UTILITIES
+// ============================================================================
+
+@mixin responsive-spacing($breakpoint-name) {
+  // Margin utilities
+  @each $name, $value in vars.$spacing-scale {
+    .tss-#{$breakpoint-name}\:m-#{$name} {
+      margin: $value !important;
+    }
+    
+    .tss-#{$breakpoint-name}\:mt-#{$name} {
+      margin-top: $value !important;
+    }
+    
+    .tss-#{$breakpoint-name}\:mr-#{$name} {
+      margin-right: $value !important;
+    }
+    
+    .tss-#{$breakpoint-name}\:mb-#{$name} {
+      margin-bottom: $value !important;
+    }
+    
+    .tss-#{$breakpoint-name}\:ml-#{$name} {
+      margin-left: $value !important;
+    }
+    
+    .tss-#{$breakpoint-name}\:mx-#{$name} {
+      margin-left: $value !important;
+      margin-right: $value !important;
+    }
+    
+    .tss-#{$breakpoint-name}\:my-#{$name} {
+      margin-top: $value !important;
+      margin-bottom: $value !important;
+    }
+    
+    // Negative margins
+    @if $name != '0' {
+      .tss-#{$breakpoint-name}\:m-n#{$name} {
+        margin: calc(-1 * #{$value}) !important;
+      }
+      
+      .tss-#{$breakpoint-name}\:mt-n#{$name} {
+        margin-top: calc(-1 * #{$value}) !important;
+      }
+      
+      .tss-#{$breakpoint-name}\:mr-n#{$name} {
+        margin-right: calc(-1 * #{$value}) !important;
+      }
+      
+      .tss-#{$breakpoint-name}\:mb-n#{$name} {
+        margin-bottom: calc(-1 * #{$value}) !important;
+      }
+      
+      .tss-#{$breakpoint-name}\:ml-n#{$name} {
+        margin-left: calc(-1 * #{$value}) !important;
+      }
+      
+      .tss-#{$breakpoint-name}\:mx-n#{$name} {
+        margin-left: calc(-1 * #{$value}) !important;
+        margin-right: calc(-1 * #{$value}) !important;
+      }
+      
+      .tss-#{$breakpoint-name}\:my-n#{$name} {
+        margin-top: calc(-1 * #{$value}) !important;
+        margin-bottom: calc(-1 * #{$value}) !important;
+      }
+    }
+    
+    // Padding utilities
+    .tss-#{$breakpoint-name}\:p-#{$name} {
+      padding: $value !important;
+    }
+    
+    .tss-#{$breakpoint-name}\:pt-#{$name} {
+      padding-top: $value !important;
+    }
+    
+    .tss-#{$breakpoint-name}\:pr-#{$name} {
+      padding-right: $value !important;
+    }
+    
+    .tss-#{$breakpoint-name}\:pb-#{$name} {
+      padding-bottom: $value !important;
+    }
+    
+    .tss-#{$breakpoint-name}\:pl-#{$name} {
+      padding-left: $value !important;
+    }
+    
+    .tss-#{$breakpoint-name}\:px-#{$name} {
+      padding-left: $value !important;
+      padding-right: $value !important;
+    }
+    
+    .tss-#{$breakpoint-name}\:py-#{$name} {
+      padding-top: $value !important;
+      padding-bottom: $value !important;
+    }
+  }
+  
+  // Auto margins
+  .tss-#{$breakpoint-name}\:m-auto { margin: auto !important; }
+  .tss-#{$breakpoint-name}\:mt-auto { margin-top: auto !important; }
+  .tss-#{$breakpoint-name}\:mr-auto { margin-right: auto !important; }
+  .tss-#{$breakpoint-name}\:mb-auto { margin-bottom: auto !important; }
+  .tss-#{$breakpoint-name}\:ml-auto { margin-left: auto !important; }
+  .tss-#{$breakpoint-name}\:mx-auto {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .tss-#{$breakpoint-name}\:my-auto {
+    margin-top: auto !important;
+    margin-bottom: auto !important;
+  }
+}
+
+// Generate responsive utilities
+@media (min-width: vars.$breakpoint-sm) {
+  @include responsive-spacing(sm);
+}
+
+@media (min-width: vars.$breakpoint-md) {
+  @include responsive-spacing(md);
+}
+
+@media (min-width: vars.$breakpoint-lg) {
+  @include responsive-spacing(lg);
+}
+
+@media (min-width: vars.$breakpoint-xl) {
+  @include responsive-spacing(xl);
+}
+
+@media (min-width: vars.$breakpoint-xxl) {
+  @include responsive-spacing(xxl);
+}
+
+// ============================================================================
+// SPACING SCALE DISPLAY UTILITY
+// ============================================================================
+
+// Debug utility to show spacing scale
+.tss-spacing-debug {
+  display: none;
+  
+  &.is-visible {
+    display: block;
+    font-family: monospace;
+    font-size: 12px;
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    padding: 1rem;
+    margin: 1rem 0;
+    
+    &::before {
+      content: "Tangible Spacing Scale:";
+      font-weight: bold;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    
+    &::after {
+      content: "0: 0, 1: 0.25rem, 2: 0.5rem, 3: 0.75rem, 4: 1rem, 5: 1.25rem, 6: 1.5rem, 8: 2rem, 10: 2.5rem, 12: 3rem, 16: 4rem, 20: 5rem, 24: 6rem, 32: 8rem, 40: 10rem, 48: 12rem, 56: 14rem, 64: 16rem";
+      white-space: pre-wrap;
+      line-height: 1.4;
+    }
+  }
+}

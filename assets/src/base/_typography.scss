@@ -1,0 +1,342 @@
+/**
+ * Typography System
+ * 
+ * Base typography styles and utility classes for consistent text styling
+ * throughout the application.
+ */
+
+// ============================================================================
+// BASE TYPOGRAPHY
+// ============================================================================
+
+body {
+  font-family: var(--tss-font-family-base);
+  font-size: var(--tss-font-size-base);
+  font-weight: var(--tss-font-weight-normal);
+  line-height: var(--tss-line-height-normal);
+  color: var(--tss-color-text);
+}
+
+// ============================================================================
+// HEADINGS
+// ============================================================================
+
+h1, .tss-h1 {
+  font-size: var(--tss-font-size-4xl);
+  font-weight: var(--tss-font-weight-bold);
+  line-height: var(--tss-line-height-tight);
+  margin-bottom: var(--tss-spacing-lg);
+}
+
+h2, .tss-h2 {
+  font-size: var(--tss-font-size-3xl);
+  font-weight: var(--tss-font-weight-semibold);
+  line-height: var(--tss-line-height-tight);
+  margin-bottom: var(--tss-spacing-base);
+}
+
+h3, .tss-h3 {
+  font-size: var(--tss-font-size-2xl);
+  font-weight: var(--tss-font-weight-semibold);
+  line-height: var(--tss-line-height-tight);
+  margin-bottom: var(--tss-spacing-base);
+}
+
+h4, .tss-h4 {
+  font-size: var(--tss-font-size-xl);
+  font-weight: var(--tss-font-weight-medium);
+  line-height: var(--tss-line-height-normal);
+  margin-bottom: var(--tss-spacing-md);
+}
+
+h5, .tss-h5 {
+  font-size: var(--tss-font-size-lg);
+  font-weight: var(--tss-font-weight-medium);
+  line-height: var(--tss-line-height-normal);
+  margin-bottom: var(--tss-spacing-md);
+}
+
+h6, .tss-h6 {
+  font-size: var(--tss-font-size-base);
+  font-weight: var(--tss-font-weight-medium);
+  line-height: var(--tss-line-height-normal);
+  margin-bottom: var(--tss-spacing-sm);
+}
+
+// ============================================================================
+// BODY TEXT
+// ============================================================================
+
+p, .tss-text {
+  margin-bottom: var(--tss-spacing-base);
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.tss-lead {
+  font-size: var(--tss-font-size-lg);
+  font-weight: var(--tss-font-weight-normal);
+  line-height: var(--tss-line-height-relaxed);
+  color: var(--tss-color-text-light);
+}
+
+.tss-small {
+  font-size: var(--tss-font-size-sm);
+}
+
+.tss-xs {
+  font-size: var(--tss-font-size-xs);
+}
+
+// ============================================================================
+// TEXT COLORS
+// ============================================================================
+
+.tss-text-primary {
+  color: var(--tss-color-primary) !important;
+}
+
+.tss-text-secondary {
+  color: var(--tss-color-secondary) !important;
+}
+
+.tss-text-muted {
+  color: var(--tss-color-text-muted) !important;
+}
+
+.tss-text-light {
+  color: var(--tss-color-text-light) !important;
+}
+
+.tss-text-success {
+  color: var(--tss-color-success) !important;
+}
+
+.tss-text-warning {
+  color: var(--tss-color-warning) !important;
+}
+
+.tss-text-error {
+  color: var(--tss-color-error) !important;
+}
+
+.tss-text-white {
+  color: var(--tss-color-white) !important;
+}
+
+// ============================================================================
+// FONT WEIGHTS
+// ============================================================================
+
+.tss-font-light {
+  font-weight: var(--tss-font-weight-light) !important;
+}
+
+.tss-font-normal {
+  font-weight: var(--tss-font-weight-normal) !important;
+}
+
+.tss-font-medium {
+  font-weight: var(--tss-font-weight-medium) !important;
+}
+
+.tss-font-semibold {
+  font-weight: var(--tss-font-weight-semibold) !important;
+}
+
+.tss-font-bold {
+  font-weight: var(--tss-font-weight-bold) !important;
+}
+
+// ============================================================================
+// TEXT ALIGNMENT
+// ============================================================================
+
+.tss-text-left {
+  text-align: left !important;
+}
+
+.tss-text-center {
+  text-align: center !important;
+}
+
+.tss-text-right {
+  text-align: right !important;
+}
+
+.tss-text-justify {
+  text-align: justify !important;
+}
+
+// ============================================================================
+// TEXT DECORATION
+// ============================================================================
+
+.tss-text-underline {
+  text-decoration: underline !important;
+}
+
+.tss-text-no-underline {
+  text-decoration: none !important;
+}
+
+.tss-text-uppercase {
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em;
+}
+
+.tss-text-lowercase {
+  text-transform: lowercase !important;
+}
+
+.tss-text-capitalize {
+  text-transform: capitalize !important;
+}
+
+// ============================================================================
+// LINE HEIGHT
+// ============================================================================
+
+.tss-leading-tight {
+  line-height: var(--tss-line-height-tight) !important;
+}
+
+.tss-leading-normal {
+  line-height: var(--tss-line-height-normal) !important;
+}
+
+.tss-leading-relaxed {
+  line-height: var(--tss-line-height-relaxed) !important;
+}
+
+// ============================================================================
+// CODE & MONOSPACE
+// ============================================================================
+
+code,
+kbd,
+samp,
+pre {
+  font-family: var(--tss-font-family-mono);
+}
+
+code {
+  font-size: 87.5%;
+  color: var(--tss-color-error);
+  background-color: var(--tss-color-bg-gray);
+  padding: 0.125rem 0.25rem;
+  border-radius: var(--tss-radius-sm);
+}
+
+pre {
+  display: block;
+  margin-bottom: var(--tss-spacing-base);
+  font-size: var(--tss-font-size-sm);
+  color: var(--tss-color-text);
+  background-color: var(--tss-color-bg-gray);
+  padding: var(--tss-spacing-base);
+  border-radius: var(--tss-radius-base);
+  overflow-x: auto;
+  
+  code {
+    font-size: inherit;
+    color: inherit;
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+  }
+}
+
+// ============================================================================
+// LINKS
+// ============================================================================
+
+a {
+  color: var(--tss-color-primary);
+  text-decoration: underline;
+  transition: color var(--tss-transition-fast) var(--tss-ease-in-out);
+  
+  &:hover {
+    color: var(--tss-color-primary-dark);
+  }
+  
+  &:focus {
+    outline: 2px solid var(--tss-color-primary);
+    outline-offset: 2px;
+    border-radius: var(--tss-radius-sm);
+  }
+}
+
+.tss-link {
+  color: var(--tss-color-primary);
+  text-decoration: underline;
+  transition: color var(--tss-transition-fast) var(--tss-ease-in-out);
+  
+  &:hover {
+    color: var(--tss-color-primary-dark);
+  }
+  
+  &:focus {
+    outline: 2px solid var(--tss-color-primary);
+    outline-offset: 2px;
+    border-radius: var(--tss-radius-sm);
+  }
+}
+
+// ============================================================================
+// LISTS
+// ============================================================================
+
+.tss-list {
+  margin-bottom: var(--tss-spacing-base);
+  padding-left: var(--tss-spacing-lg);
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+  
+  li {
+    margin-bottom: var(--tss-spacing-xs);
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.tss-list-disc {
+  @extend .tss-list;
+  list-style-type: disc;
+}
+
+.tss-list-decimal {
+  @extend .tss-list;
+  list-style-type: decimal;
+}
+
+.tss-list-none {
+  list-style: none;
+  padding-left: 0;
+}
+
+// ============================================================================
+// BLOCKQUOTES
+// ============================================================================
+
+blockquote, .tss-blockquote {
+  margin: var(--tss-spacing-lg) 0;
+  padding: var(--tss-spacing-base) var(--tss-spacing-lg);
+  border-left: 4px solid var(--tss-color-primary);
+  background-color: var(--tss-color-bg-alt);
+  font-style: italic;
+  
+  p {
+    margin-bottom: var(--tss-spacing-sm);
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

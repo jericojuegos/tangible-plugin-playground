@@ -1,0 +1,52 @@
+/**
+ * Default Theme
+ * 
+ * Default color scheme and component variants.
+ */
+
+// Import base variables to extend
+@use "../base/variables";
+
+// ============================================================================
+// DEFAULT THEME VARIABLES
+// ============================================================================
+
+:root {
+  // Override default colors for the default theme
+  --tss-theme-primary: var(--tss-color-primary);
+  --tss-theme-secondary: var(--tss-color-secondary);
+  --tss-theme-success: var(--tss-color-success);
+  --tss-theme-warning: var(--tss-color-warning);
+  --tss-theme-error: var(--tss-color-error);
+  
+  // Theme-specific component styles
+  --tss-theme-button-radius: var(--tss-radius-base);
+  --tss-theme-card-shadow: var(--tss-shadow-sm);
+  --tss-theme-input-focus-shadow: var(--tss-shadow-focus);
+}
+
+// ============================================================================
+// DEFAULT THEME COMPONENT OVERRIDES
+// ============================================================================
+
+.tss-theme--default {
+  // Buttons use standard border radius
+  .tss-btn {
+    border-radius: var(--tss-theme-button-radius);
+  }
+  
+  // Cards have subtle shadows
+  .tss-card {
+    box-shadow: var(--tss-theme-card-shadow);
+  }
+  
+  // Form controls have standard focus states
+  .tss-form__control:focus {
+    box-shadow: var(--tss-theme-input-focus-shadow);
+  }
+  
+  // Tabs use default styling
+  .tss-tabs {
+    @extend .tss-tabs--default;
+  }
+}

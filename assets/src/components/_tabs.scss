@@ -1,0 +1,281 @@
+/**
+ * Tabs Component
+ * 
+ * Modern tab system with multiple style variants.
+ * Extends the existing Tangible Framework tab functionality.
+ */
+
+@use "../base/mixins" as *;
+
+// ============================================================================
+// BASE TAB STYLES
+// ============================================================================
+
+%tss-tabs-base {
+  .nav-tab-wrapper {
+    display: flex;
+    align-items: stretch;
+    margin-bottom: 0;
+    border-bottom: 1px solid var(--tss-color-border);
+    
+    .nav-tab {
+      margin-right: 0;
+      margin-bottom: 0;
+      padding: var(--tss-spacing-md) var(--tss-spacing-lg);
+      font-weight: var(--tss-font-weight-medium);
+      text-decoration: none;
+      cursor: pointer;
+      border: 1px solid transparent;
+      border-bottom: none;
+      background-color: transparent;
+      color: var(--tss-color-text-light);
+      transition: all var(--tss-transition-fast) var(--tss-ease-in-out);
+      
+      &:hover {
+        text-decoration: none;
+        color: var(--tss-color-text);
+        background-color: var(--tss-color-bg-alt);
+      }
+      
+      &:focus {
+        outline: none;
+        box-shadow: inset 0 0 0 2px var(--tss-color-primary);
+      }
+      
+      &.nav-tab-active {
+        color: var(--tss-color-primary);
+        background-color: var(--tss-color-bg);
+        border-color: var(--tss-color-border);
+        border-bottom-color: var(--tss-color-bg);
+        font-weight: var(--tss-font-weight-semibold);
+        position: relative;
+        z-index: 1;
+      }
+    }
+  }
+  
+  // Tab content spacing
+  .tangible-plugin-settings-section-wrapper {
+    margin-top: 0;
+    background-color: var(--tss-color-bg);
+    border: 1px solid var(--tss-color-border);
+    border-top: none;
+    padding: var(--tss-spacing-lg);
+  }
+}
+
+// ============================================================================
+// TAB VARIANTS
+// ============================================================================
+
+// Default tabs
+.tss-tabs--default {
+  @extend %tss-tabs-base;
+}
+
+// Classic tabs (more traditional styling)
+.tss-tabs--classic {
+  @extend %tss-tabs-base;
+  
+  .nav-tab-wrapper {
+    background-color: var(--tss-color-bg-gray);
+    border-radius: var(--tss-radius-base) var(--tss-radius-base) 0 0;
+    padding: var(--tss-spacing-xs) var(--tss-spacing-xs) 0;
+    
+    .nav-tab {
+      border-radius: var(--tss-radius-base) var(--tss-radius-base) 0 0;
+      margin-right: var(--tss-spacing-xs);
+      
+      &:hover {
+        background-color: var(--tss-color-bg);
+      }
+      
+      &.nav-tab-active {
+        background-color: var(--tss-color-bg);
+        border-color: var(--tss-color-border);
+        border-bottom-color: var(--tss-color-bg);
+        margin-bottom: -1px;
+      }
+    }
+  }
+}
+
+// Rounded tabs (modern rounded styling)
+.tss-tabs--rounded {
+  @extend %tss-tabs-base;
+  
+  .nav-tab-wrapper {
+    border: none;
+    gap: var(--tss-spacing-xs);
+    
+    .nav-tab {
+      border-radius: var(--tss-radius-lg);
+      border: 1px solid var(--tss-color-border-light);
+      
+      &:hover {
+        background-color: var(--tss-color-bg-alt);
+        border-color: var(--tss-color-border);
+      }
+      
+      &.nav-tab-active {
+        background-color: var(--tss-color-primary);
+        color: var(--tss-color-white);
+        border-color: var(--tss-color-primary);
+        box-shadow: var(--tss-shadow-sm);
+      }
+    }
+  }
+  
+  .tangible-plugin-settings-section-wrapper {
+    border: 1px solid var(--tss-color-border);
+    border-radius: var(--tss-radius-base);
+    margin-top: var(--tss-spacing-base);
+  }
+}
+
+// Pills tabs (pill-shaped buttons)
+.tss-tabs--pills {
+  .nav-tab-wrapper {
+    border: none;
+    gap: var(--tss-spacing-sm);
+    flex-wrap: wrap;
+    
+    .nav-tab {
+      padding: var(--tss-spacing-sm) var(--tss-spacing-base);
+      border-radius: var(--tss-radius-full);
+      border: none;
+      background-color: var(--tss-color-bg-gray);
+      color: var(--tss-color-text-light);
+      font-size: var(--tss-font-size-sm);
+      
+      &:hover {
+        background-color: var(--tss-color-bg-alt);
+        color: var(--tss-color-text);
+      }
+      
+      &.nav-tab-active {
+        background-color: var(--tss-color-primary);
+        color: var(--tss-color-white);
+      }
+    }
+  }
+  
+  .tangible-plugin-settings-section-wrapper {
+    border: none;
+    padding: var(--tss-spacing-lg) 0;
+  }
+}
+
+// Minimal tabs (clean, minimal styling)
+.tss-tabs--minimal {
+  .nav-tab-wrapper {
+    border: none;
+    
+    .nav-tab {
+      padding: var(--tss-spacing-base) 0;
+      margin-right: var(--tss-spacing-xl);
+      border: none;
+      background: none;
+      position: relative;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background-color: transparent;
+        transition: background-color var(--tss-transition-fast) var(--tss-ease-in-out);
+      }
+      
+      &:hover {
+        background: none;
+        
+        &::after {
+          background-color: var(--tss-color-border-dark);
+        }
+      }
+      
+      &.nav-tab-active {
+        color: var(--tss-color-primary);
+        background: none;
+        
+        &::after {
+          background-color: var(--tss-color-primary);
+        }
+      }
+    }
+  }
+  
+  .tangible-plugin-settings-section-wrapper {
+    border: none;
+    padding: var(--tss-spacing-lg) 0;
+  }
+}
+
+// ============================================================================
+// TAB SIZES
+// ============================================================================
+
+.tss-tabs--small {
+  .nav-tab {
+    padding: var(--tss-spacing-sm) var(--tss-spacing-base);
+    font-size: var(--tss-font-size-sm);
+  }
+}
+
+.tss-tabs--large {
+  .nav-tab {
+    padding: var(--tss-spacing-lg) var(--tss-spacing-xl);
+    font-size: var(--tss-font-size-lg);
+  }
+}
+
+// ============================================================================
+// TAB POSITIONS
+// ============================================================================
+
+// Vertical tabs
+.tss-tabs--vertical {
+  display: flex;
+  
+  .nav-tab-wrapper {
+    flex-direction: column;
+    width: 200px;
+    margin-right: var(--tss-spacing-lg);
+    border-right: 1px solid var(--tss-color-border);
+    border-bottom: none;
+    
+    .nav-tab {
+      text-align: left;
+      border-right: none;
+      border-bottom: 1px solid transparent;
+      
+      &.nav-tab-active {
+        border-color: var(--tss-color-border);
+        border-right-color: var(--tss-color-bg);
+        margin-right: -1px;
+      }
+    }
+  }
+  
+  .tangible-plugin-settings-section-wrapper {
+    flex: 1;
+    border-left: none;
+  }
+}
+
+// Centered tabs
+.tss-tabs--center {
+  .nav-tab-wrapper {
+    justify-content: center;
+  }
+}
+
+// Right-aligned tabs
+.tss-tabs--right {
+  .nav-tab-wrapper {
+    justify-content: flex-end;
+  }
+}

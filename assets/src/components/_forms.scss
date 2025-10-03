@@ -1,0 +1,438 @@
+/**
+ * Form Components
+ * 
+ * Comprehensive form styling including inputs, selects, textareas, and form layouts.
+ */
+
+@use "../base/mixins" as *;
+
+// ============================================================================
+// BASE FORM STYLES
+// ============================================================================
+
+.tss-form {
+  width: 100%;
+  
+  // Form groups (field containers)
+  &__group {
+    margin-bottom: var(--tss-spacing-base);
+    
+    &--inline {
+      display: flex;
+      align-items: center;
+      gap: var(--tss-spacing-base);
+      
+      .tss-form__label {
+        margin-bottom: 0;
+        white-space: nowrap;
+      }
+    }
+    
+    &--sm {
+      margin-bottom: var(--tss-spacing-sm);
+    }
+    
+    &--lg {
+      margin-bottom: var(--tss-spacing-lg);
+    }
+  }
+  
+  // Form labels
+  &__label {
+    display: inline-block;
+    margin-bottom: var(--tss-spacing-sm);
+    font-weight: var(--tss-font-weight-medium);
+    color: var(--tss-color-text);
+    
+    &--required::after {
+      content: " *";
+      color: var(--tss-color-error);
+    }
+    
+    &--optional::after {
+      content: " (optional)";
+      color: var(--tss-color-text-muted);
+      font-weight: var(--tss-font-weight-normal);
+    }
+  }
+  
+  // Base form control styles
+  &__control {
+    @include form-control();
+    
+    // Size variants
+    &--sm {
+      padding: var(--tss-spacing-xs) var(--tss-spacing-sm);
+      font-size: var(--tss-font-size-sm);
+      border-radius: var(--tss-radius-sm);
+    }
+    
+    &--lg {
+      padding: var(--tss-spacing-base) var(--tss-spacing-lg);
+      font-size: var(--tss-font-size-lg);
+      border-radius: var(--tss-radius-md);
+    }
+    
+    // Validation states
+    &--valid {
+      border-color: var(--tss-color-success);
+      
+      &:focus {
+        border-color: var(--tss-color-success);
+        box-shadow: 0 0 0 3px rgba(0, 163, 42, 0.15);
+      }
+    }
+    
+    &--invalid {
+      border-color: var(--tss-color-error);
+      
+      &:focus {
+        border-color: var(--tss-color-error);
+        box-shadow: 0 0 0 3px rgba(214, 54, 56, 0.15);
+      }
+    }
+  }
+  
+  // Textarea
+  &__textarea {
+    @extend .tss-form__control;
+    resize: vertical;
+    min-height: 100px;
+    
+    &--no-resize {
+      resize: none;
+    }
+    
+    &--auto-resize {
+      resize: none;
+      overflow: hidden;
+    }
+  }
+  
+  // Select dropdown
+  &__select {
+    @extend .tss-form__control;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right var(--tss-spacing-sm) center;
+    background-repeat: no-repeat;
+    background-size: 1rem;
+    padding-right: calc(var(--tss-spacing-md) + 1.5rem);
+    
+    &:focus {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%232271b1' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+    }
+  }
+  
+  // Checkboxes and radios
+  &__check {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--tss-spacing-sm);
+    margin-bottom: var(--tss-spacing-sm);
+    
+    &-input {
+      width: 1rem;
+      height: 1rem;
+      margin: 0;
+      margin-top: 0.125rem; // Align with first line of text
+      cursor: pointer;
+      accent-color: var(--tss-color-primary);
+    }
+    
+    &-label {
+      flex: 1;
+      cursor: pointer;
+      font-weight: var(--tss-font-weight-normal);
+      line-height: var(--tss-line-height-normal);
+    }
+    
+    &--inline {
+      display: inline-flex;
+      margin-right: var(--tss-spacing-base);
+      margin-bottom: 0;
+    }
+  }
+  
+  // Help text
+  &__text {
+    margin-top: var(--tss-spacing-xs);
+    font-size: var(--tss-font-size-sm);
+    color: var(--tss-color-text-muted);
+    line-height: var(--tss-line-height-normal);
+  }
+  
+  // Validation feedback
+  &__feedback {
+    display: block;
+    width: 100%;
+    margin-top: var(--tss-spacing-xs);
+    font-size: var(--tss-font-size-sm);
+    line-height: var(--tss-line-height-normal);
+    
+    &--valid {
+      color: var(--tss-color-success);
+    }
+    
+    &--invalid {
+      color: var(--tss-color-error);
+    }
+  }
+}
+
+// ============================================================================
+// INPUT GROUPS
+// ============================================================================
+
+.tss-input-group {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  width: 100%;
+  
+  .tss-form__control {
+    position: relative;
+    flex: 1 1 auto;
+    width: 1%;
+    min-width: 0;
+    
+    &:not(:first-child) {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      border-left: 0;
+    }
+    
+    &:not(:last-child) {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+  
+  &__text {
+    display: flex;
+    align-items: center;
+    padding: var(--tss-spacing-sm) var(--tss-spacing-md);
+    font-size: var(--tss-font-size-base);
+    font-weight: var(--tss-font-weight-normal);
+    line-height: 1.5;
+    color: var(--tss-color-text);
+    text-align: center;
+    white-space: nowrap;
+    background-color: var(--tss-color-bg-gray);
+    border: var(--tss-border-width) solid var(--tss-color-border);
+    border-radius: var(--tss-radius-base);
+    
+    &:not(:first-child) {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      border-left: 0;
+    }
+    
+    &:not(:last-child) {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+  
+  .tss-btn {
+    position: relative;
+    z-index: 2;
+    
+    &:not(:first-child) {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    
+    &:not(:last-child) {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+}
+
+// ============================================================================
+// FLOATING LABELS
+// ============================================================================
+
+.tss-form__floating {
+  position: relative;
+  
+  .tss-form__control {
+    height: calc(3.5rem + 2px);
+    line-height: 1.25;
+    padding: 1rem 0.75rem;
+    
+    &:focus,
+    &:not(:placeholder-shown) {
+      padding-top: 1.625rem;
+      padding-bottom: 0.625rem;
+    }
+    
+    &:focus ~ .tss-form__label,
+    &:not(:placeholder-shown) ~ .tss-form__label {
+      opacity: 0.65;
+      transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
+    }
+    
+    &::placeholder {
+      color: transparent;
+    }
+  }
+  
+  .tss-form__label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    padding: 1rem 0.75rem;
+    pointer-events: none;
+    border: var(--tss-border-width) solid transparent;
+    transform-origin: 0 0;
+    transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
+    margin-bottom: 0;
+  }
+}
+
+// ============================================================================
+// FORM LAYOUTS
+// ============================================================================
+
+// Horizontal form
+.tss-form--horizontal {
+  .tss-form__group {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--tss-spacing-base);
+    
+    .tss-form__label {
+      flex: 0 0 auto;
+      width: 200px;
+      margin-bottom: 0;
+      padding-top: calc(var(--tss-spacing-sm) + 1px); // Align with input
+    }
+    
+    .tss-form__control-wrapper {
+      flex: 1;
+    }
+  }
+}
+
+// Inline form
+.tss-form--inline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--tss-spacing-base);
+  
+  .tss-form__group {
+    display: flex;
+    align-items: center;
+    gap: var(--tss-spacing-sm);
+    margin-bottom: 0;
+    
+    .tss-form__label {
+      margin-bottom: 0;
+      white-space: nowrap;
+    }
+  }
+}
+
+// ============================================================================
+// RANGE INPUTS
+// ============================================================================
+
+.tss-range {
+  width: 100%;
+  height: 1.5rem;
+  padding: 0;
+  background-color: transparent;
+  appearance: none;
+  
+  &:focus {
+    outline: 0;
+    
+    &::-webkit-slider-thumb {
+      box-shadow: 0 0 0 1px var(--tss-color-bg), 0 0 0 3px var(--tss-color-primary);
+    }
+    
+    &::-moz-range-thumb {
+      box-shadow: 0 0 0 1px var(--tss-color-bg), 0 0 0 3px var(--tss-color-primary);
+    }
+  }
+  
+  &::-webkit-slider-track {
+    width: 100%;
+    height: 0.5rem;
+    color: transparent;
+    cursor: pointer;
+    background-color: var(--tss-color-bg-gray);
+    border-color: transparent;
+    border-radius: var(--tss-radius-base);
+  }
+  
+  &::-webkit-slider-thumb {
+    width: 1rem;
+    height: 1rem;
+    margin-top: -0.25rem;
+    background-color: var(--tss-color-primary);
+    border: 0;
+    border-radius: 50%;
+    appearance: none;
+    transition: background-color var(--tss-transition-fast) var(--tss-ease-in-out);
+    cursor: pointer;
+    
+    &:hover {
+      background-color: var(--tss-color-primary-dark);
+    }
+  }
+  
+  &::-moz-range-track {
+    width: 100%;
+    height: 0.5rem;
+    color: transparent;
+    cursor: pointer;
+    background-color: var(--tss-color-bg-gray);
+    border-color: transparent;
+    border-radius: var(--tss-radius-base);
+    border: 0;
+  }
+  
+  &::-moz-range-thumb {
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--tss-color-primary);
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color var(--tss-transition-fast) var(--tss-ease-in-out);
+    
+    &:hover {
+      background-color: var(--tss-color-primary-dark);
+    }
+  }
+}
+
+// ============================================================================
+// FILE INPUTS
+// ============================================================================
+
+.tss-form__file {
+  position: relative;
+  display: inline-block;
+  
+  &-input {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+  
+  &-label {
+    @extend .tss-btn;
+    @extend .tss-btn--outline-primary;
+    margin-bottom: 0;
+    cursor: pointer;
+  }
+}

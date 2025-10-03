@@ -1,0 +1,74 @@
+/**
+ * Classic Theme
+ * 
+ * Traditional, conservative styling with standard WordPress admin colors.
+ */
+
+// ============================================================================
+// CLASSIC THEME VARIABLES
+// ============================================================================
+
+:root {
+  // Classic theme colors (more muted)
+  --tss-theme-primary: #0073aa;
+  --tss-theme-primary-dark: #005a87;
+  --tss-theme-secondary: #82878c;
+  --tss-theme-success: #46b450;
+  --tss-theme-warning: #ffb900;
+  --tss-theme-error: #dc3232;
+  
+  // Classic styling preferences
+  --tss-theme-button-radius: var(--tss-radius-sm);
+  --tss-theme-card-shadow: none;
+  --tss-theme-input-focus-shadow: 0 0 0 1px var(--tss-theme-primary);
+}
+
+// ============================================================================
+// CLASSIC THEME COMPONENT OVERRIDES
+// ============================================================================
+
+.tss-theme--classic {
+  // Override color variables for classic theme
+  --tss-color-primary: var(--tss-theme-primary);
+  --tss-color-primary-dark: var(--tss-theme-primary-dark);
+  --tss-color-secondary: var(--tss-theme-secondary);
+  --tss-color-success: var(--tss-theme-success);
+  --tss-color-warning: var(--tss-theme-warning);
+  --tss-color-error: var(--tss-theme-error);
+  
+  // Buttons have smaller border radius
+  .tss-btn {
+    border-radius: var(--tss-theme-button-radius);
+    font-weight: var(--tss-font-weight-normal);
+  }
+  
+  // Cards have borders instead of shadows
+  .tss-card {
+    box-shadow: var(--tss-theme-card-shadow);
+    border: 2px solid var(--tss-color-border);
+  }
+  
+  // Form controls have thinner focus outline
+  .tss-form__control:focus {
+    box-shadow: var(--tss-theme-input-focus-shadow);
+  }
+  
+  // Tabs use classic styling
+  .tss-tabs {
+    @extend .tss-tabs--classic;
+  }
+  
+  // Tables have more traditional styling
+  .tss-table {
+    th {
+      background-color: var(--tss-color-gray-100);
+      font-weight: var(--tss-font-weight-semibold);
+    }
+  }
+  
+  // Modals have thicker borders
+  .tss-modal__content {
+    border-width: 2px;
+    box-shadow: var(--tss-shadow-lg);
+  }
+}

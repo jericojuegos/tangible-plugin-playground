@@ -1,0 +1,337 @@
+/**
+ * Mixins
+ * 
+ * Reusable mixins for common patterns and functionality.
+ * These mixins help maintain consistency and reduce code duplication.
+ */
+
+@use "sass:math";
+
+// ============================================================================
+// LAYOUT MIXINS
+// ============================================================================
+
+// Container mixin for creating responsive containers
+@mixin container($max-width: var(--tss-container-max-width)) {
+  width: 100%;
+  padding-right: calc(var(--tss-grid-gutter) / 2);
+  padding-left: calc(var(--tss-grid-gutter) / 2);
+  margin-right: auto;
+  margin-left: auto;
+  max-width: $max-width;
+}
+
+// Flexbox row for grid systems
+@mixin make-row() {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: calc(var(--tss-grid-gutter) / -2);
+  margin-left: calc(var(--tss-grid-gutter) / -2);
+}
+
+// Flexbox column for grid systems
+@mixin make-col($size: false, $columns: 12) {
+  flex: 0 0 auto;
+  width: if($size, percentage(math.div($size, $columns)), 100%);
+  padding-right: calc(var(--tss-grid-gutter) / 2);
+  padding-left: calc(var(--tss-grid-gutter) / 2);
+}
+
+// Center element horizontally and vertically
+@mixin center() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Center element horizontally
+@mixin center-x() {
+  display: flex;
+  justify-content: center;
+}
+
+// Center element vertically
+@mixin center-y() {
+  display: flex;
+  align-items: center;
+}
+
+// ============================================================================
+// RESPONSIVE MIXINS
+// ============================================================================
+
+// Media query breakpoints
+@mixin media-up($name) {
+  @if $name == sm {
+    @media (min-width: 576px) { @content; }
+  } @else if $name == md {
+    @media (min-width: 768px) { @content; }
+  } @else if $name == lg {
+    @media (min-width: 992px) { @content; }
+  } @else if $name == xl {
+    @media (min-width: 1200px) { @content; }
+  } @else if $name == xxl {
+    @media (min-width: 1400px) { @content; }
+  }
+}
+
+@mixin media-down($name) {
+  @if $name == sm {
+    @media (max-width: 575.98px) { @content; }
+  } @else if $name == md {
+    @media (max-width: 767.98px) { @content; }
+  } @else if $name == lg {
+    @media (max-width: 991.98px) { @content; }
+  } @else if $name == xl {
+    @media (max-width: 1199.98px) { @content; }
+  } @else if $name == xxl {
+    @media (max-width: 1399.98px) { @content; }
+  }
+}
+
+@mixin media-between($lower, $upper) {
+  @if $lower == xs and $upper == sm {
+    @media (max-width: 575.98px) { @content; }
+  } @else if $lower == sm and $upper == md {
+    @media (min-width: 576px) and (max-width: 767.98px) { @content; }
+  } @else if $lower == md and $upper == lg {
+    @media (min-width: 768px) and (max-width: 991.98px) { @content; }
+  } @else if $lower == lg and $upper == xl {
+    @media (min-width: 992px) and (max-width: 1199.98px) { @content; }
+  } @else if $lower == xl and $upper == xxl {
+    @media (min-width: 1200px) and (max-width: 1399.98px) { @content; }
+  }
+}
+
+// ============================================================================
+// BUTTON MIXINS
+// ============================================================================
+
+// Base button styles
+@mixin button-base() {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--tss-spacing-sm) var(--tss-spacing-base);
+  font-family: inherit;
+  font-size: var(--tss-font-size-base);
+  font-weight: var(--tss-font-weight-medium);
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  border: var(--tss-border-width) solid transparent;
+  border-radius: var(--tss-radius-base);
+  transition: all var(--tss-transition-fast) var(--tss-ease-in-out);
+  
+  &:focus {
+    outline: none;
+    box-shadow: var(--tss-shadow-focus);
+  }
+  
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+// Button variant mixin
+@mixin button-variant($bg, $border: $bg, $color: #fff, $hover-bg: darken($bg, 10%), $hover-border: darken($border, 10%), $hover-color: $color) {
+  color: $color;
+  background-color: $bg;
+  border-color: $border;
+  
+  &:hover {
+    color: $hover-color;
+    background-color: $hover-bg;
+    border-color: $hover-border;
+  }
+  
+  &:focus {
+    box-shadow: 0 0 0 3px rgba($bg, 0.25);
+  }
+}
+
+// Button size mixin
+@mixin button-size($padding-y, $padding-x, $font-size, $border-radius) {
+  padding: $padding-y $padding-x;
+  font-size: $font-size;
+  border-radius: $border-radius;
+}
+
+// ============================================================================
+// FORM MIXINS
+// ============================================================================
+
+// Base form control styles
+@mixin form-control() {
+  display: block;
+  width: 100%;
+  padding: var(--tss-spacing-sm) var(--tss-spacing-md);
+  font-family: inherit;
+  font-size: var(--tss-font-size-base);
+  font-weight: var(--tss-font-weight-normal);
+  line-height: 1.5;
+  color: var(--tss-color-text);
+  background-color: var(--tss-color-bg);
+  background-image: none;
+  border: var(--tss-border-width) solid var(--tss-color-border);
+  border-radius: var(--tss-radius-base);
+  transition: border-color var(--tss-transition-fast) var(--tss-ease-in-out), 
+              box-shadow var(--tss-transition-fast) var(--tss-ease-in-out);
+  
+  &:focus {
+    color: var(--tss-color-text);
+    background-color: var(--tss-color-bg);
+    border-color: var(--tss-color-primary);
+    outline: none;
+    box-shadow: var(--tss-shadow-focus);
+  }
+  
+  &:disabled,
+  &[readonly] {
+    background-color: var(--tss-color-bg-gray);
+    opacity: 1;
+    cursor: not-allowed;
+  }
+  
+  &::placeholder {
+    color: var(--tss-color-text-muted);
+    opacity: 1;
+  }
+}
+
+// Form validation states
+@mixin form-validation-state($color) {
+  .tss-form-control {
+    border-color: $color;
+    
+    &:focus {
+      border-color: $color;
+      box-shadow: 0 0 0 3px rgba($color, 0.25);
+    }
+  }
+  
+  .tss-form-feedback {
+    color: $color;
+  }
+}
+
+// ============================================================================
+// UTILITY MIXINS
+// ============================================================================
+
+// Visually hide content (but keep it accessible to screen readers)
+@mixin sr-only() {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+// Clear floats
+@mixin clearfix() {
+  &::after {
+    display: block;
+    clear: both;
+    content: "";
+  }
+}
+
+// Truncate text with ellipsis
+@mixin text-truncate() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Multi-line text truncation
+@mixin text-truncate-multiline($lines: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// Aspect ratio
+@mixin aspect-ratio($width: 1, $height: 1) {
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: math.div($height, $width) * 100%;
+  }
+  
+  > * {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+// ============================================================================
+// ANIMATION MIXINS
+// ============================================================================
+
+// Smooth transition
+@mixin transition($properties: all, $duration: var(--tss-transition-base), $timing: var(--tss-ease-in-out)) {
+  transition: $properties $duration $timing;
+}
+
+// Hover lift effect
+@mixin hover-lift($distance: 4px) {
+  transition: transform var(--tss-transition-base) var(--tss-ease-out);
+  
+  &:hover {
+    transform: translateY(-#{$distance});
+  }
+}
+
+// Fade in animation
+@mixin fade-in($duration: var(--tss-transition-base)) {
+  opacity: 0;
+  animation: fade-in $duration var(--tss-ease-out) forwards;
+}
+
+@keyframes fade-in {
+  to {
+    opacity: 1;
+  }
+}
+
+// ============================================================================
+// BORDER MIXINS
+// ============================================================================
+
+// Add border to specific sides
+@mixin border-top($width: var(--tss-border-width), $style: solid, $color: var(--tss-color-border)) {
+  border-top: $width $style $color;
+}
+
+@mixin border-right($width: var(--tss-border-width), $style: solid, $color: var(--tss-color-border)) {
+  border-right: $width $style $color;
+}
+
+@mixin border-bottom($width: var(--tss-border-width), $style: solid, $color: var(--tss-color-border)) {
+  border-bottom: $width $style $color;
+}
+
+@mixin border-left($width: var(--tss-border-width), $style: solid, $color: var(--tss-color-border)) {
+  border-left: $width $style $color;
+}

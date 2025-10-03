@@ -1,0 +1,376 @@
+/**
+ * Grid Utilities
+ * 
+ * Responsive grid system based on flexbox and CSS Grid.
+ */
+
+@use "sass:math";
+@use "../base/mixins" as *;
+
+// ============================================================================
+// CONTAINER
+// ============================================================================
+
+.tss-container {
+  @include container();
+  
+  &--fluid {
+    max-width: none;
+  }
+  
+  &--sm {
+    max-width: 540px;
+  }
+  
+  &--md {
+    max-width: 720px;
+  }
+  
+  &--lg {
+    max-width: 960px;
+  }
+  
+  &--xl {
+    max-width: 1140px;
+  }
+  
+  &--xxl {
+    max-width: 1320px;
+  }
+}
+
+// ============================================================================
+// FLEXBOX GRID
+// ============================================================================
+
+.tss-row {
+  @include make-row();
+  
+  // CSS Grid alternative
+  &--grid {
+    display: grid;
+    grid-template-columns: repeat(var(--tss-grid-columns), 1fr);
+    gap: var(--tss-grid-gutter);
+    margin: 0;
+    
+    > * {
+      padding: 0;
+    }
+  }
+  
+  // No gutters
+  &--no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+    
+    > [class*="tss-col"] {
+      padding-right: 0;
+      padding-left: 0;
+    }
+    
+    &.tss-row--grid {
+      gap: 0;
+    }
+  }
+  
+  // Equal height columns
+  &--equal-height {
+    align-items: stretch;
+    
+    > [class*="tss-col"] {
+      display: flex;
+      flex-direction: column;
+      
+      > * {
+        flex: 1;
+      }
+    }
+  }
+  
+  // Auto-fit columns
+  &--auto {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--tss-grid-gutter);
+    margin: 0;
+    
+    > * {
+      padding: 0;
+    }
+  }
+}
+
+// ============================================================================
+// COLUMNS - GENERATE ALL COLUMN CLASSES
+// ============================================================================
+
+// Base column
+.tss-col {
+  @include make-col();
+  flex: 1 0 0%;
+}
+
+// Generate responsive column classes
+@each $breakpoint in (xs, sm, md, lg, xl, xxl) {
+  @include media-up($breakpoint) {
+    // Auto columns
+    .tss-col#{if($breakpoint != xs, '-#{$breakpoint}', '')} {
+      @include make-col();
+      flex: 1 0 0%;
+    }
+    
+    // Specific column sizes
+    @for $i from 1 through 12 {
+      .tss-col#{if($breakpoint != xs, '-#{$breakpoint}', '')}-#{$i} {
+        @include make-col($i, 12);
+      }
+    }
+    
+    // CSS Grid column spans
+    .tss-row--grid {
+      @for $i from 1 through 12 {
+        .tss-col#{if($breakpoint != xs, '-#{$breakpoint}', '')}-#{$i} {
+          grid-column: span #{$i};
+        }
+      }
+    }
+    
+    // Offset classes
+    @for $i from 0 through 11 {
+      .tss-offset#{if($breakpoint != xs, '-#{$breakpoint}', '')}-#{$i} {
+        margin-left: if($i > 0, percentage(math.div($i, 12)), 0);
+      }
+    }
+    
+    // Order classes
+    @for $i from 0 through 12 {
+      .tss-order#{if($breakpoint != xs, '-#{$breakpoint}', '')}-#{$i} {
+        order: #{$i};
+      }
+    }
+    
+    .tss-order#{if($breakpoint != xs, '-#{$breakpoint}', '')}-first {
+      order: -1;
+    }
+    
+    .tss-order#{if($breakpoint != xs, '-#{$breakpoint}', '')}-last {
+      order: 13;
+    }
+  }
+}
+
+// ============================================================================
+// FLEX UTILITIES
+// ============================================================================
+
+.tss-d-flex {
+  display: flex !important;
+}
+
+.tss-d-inline-flex {
+  display: inline-flex !important;
+}
+
+.tss-flex-row {
+  flex-direction: row !important;
+}
+
+.tss-flex-column {
+  flex-direction: column !important;
+}
+
+.tss-flex-row-reverse {
+  flex-direction: row-reverse !important;
+}
+
+.tss-flex-column-reverse {
+  flex-direction: column-reverse !important;
+}
+
+.tss-flex-wrap {
+  flex-wrap: wrap !important;
+}
+
+.tss-flex-nowrap {
+  flex-wrap: nowrap !important;
+}
+
+.tss-flex-wrap-reverse {
+  flex-wrap: wrap-reverse !important;
+}
+
+.tss-flex-fill {
+  flex: 1 1 auto !important;
+}
+
+.tss-flex-grow-0 {
+  flex-grow: 0 !important;
+}
+
+.tss-flex-grow-1 {
+  flex-grow: 1 !important;
+}
+
+.tss-flex-shrink-0 {
+  flex-shrink: 0 !important;
+}
+
+.tss-flex-shrink-1 {
+  flex-shrink: 1 !important;
+}
+
+// ============================================================================
+// JUSTIFY CONTENT
+// ============================================================================
+
+.tss-justify-content-start {
+  justify-content: flex-start !important;
+}
+
+.tss-justify-content-end {
+  justify-content: flex-end !important;
+}
+
+.tss-justify-content-center {
+  justify-content: center !important;
+}
+
+.tss-justify-content-between {
+  justify-content: space-between !important;
+}
+
+.tss-justify-content-around {
+  justify-content: space-around !important;
+}
+
+.tss-justify-content-evenly {
+  justify-content: space-evenly !important;
+}
+
+// ============================================================================
+// ALIGN ITEMS
+// ============================================================================
+
+.tss-align-items-start {
+  align-items: flex-start !important;
+}
+
+.tss-align-items-end {
+  align-items: flex-end !important;
+}
+
+.tss-align-items-center {
+  align-items: center !important;
+}
+
+.tss-align-items-baseline {
+  align-items: baseline !important;
+}
+
+.tss-align-items-stretch {
+  align-items: stretch !important;
+}
+
+// ============================================================================
+// ALIGN CONTENT
+// ============================================================================
+
+.tss-align-content-start {
+  align-content: flex-start !important;
+}
+
+.tss-align-content-end {
+  align-content: flex-end !important;
+}
+
+.tss-align-content-center {
+  align-content: center !important;
+}
+
+.tss-align-content-between {
+  align-content: space-between !important;
+}
+
+.tss-align-content-around {
+  align-content: space-around !important;
+}
+
+.tss-align-content-stretch {
+  align-content: stretch !important;
+}
+
+// ============================================================================
+// ALIGN SELF
+// ============================================================================
+
+.tss-align-self-auto {
+  align-self: auto !important;
+}
+
+.tss-align-self-start {
+  align-self: flex-start !important;
+}
+
+.tss-align-self-end {
+  align-self: flex-end !important;
+}
+
+.tss-align-self-center {
+  align-self: center !important;
+}
+
+.tss-align-self-baseline {
+  align-self: baseline !important;
+}
+
+.tss-align-self-stretch {
+  align-self: stretch !important;
+}
+
+// ============================================================================
+// RESPONSIVE FLEX UTILITIES
+// ============================================================================
+
+@each $breakpoint in (sm, md, lg, xl, xxl) {
+  @include media-up($breakpoint) {
+    .tss-d-#{$breakpoint}-flex {
+      display: flex !important;
+    }
+    
+    .tss-d-#{$breakpoint}-inline-flex {
+      display: inline-flex !important;
+    }
+    
+    .tss-flex-#{$breakpoint}-row {
+      flex-direction: row !important;
+    }
+    
+    .tss-flex-#{$breakpoint}-column {
+      flex-direction: column !important;
+    }
+    
+    .tss-justify-content-#{$breakpoint}-start {
+      justify-content: flex-start !important;
+    }
+    
+    .tss-justify-content-#{$breakpoint}-center {
+      justify-content: center !important;
+    }
+    
+    .tss-justify-content-#{$breakpoint}-end {
+      justify-content: flex-end !important;
+    }
+    
+    .tss-align-items-#{$breakpoint}-start {
+      align-items: flex-start !important;
+    }
+    
+    .tss-align-items-#{$breakpoint}-center {
+      align-items: center !important;
+    }
+    
+    .tss-align-items-#{$breakpoint}-end {
+      align-items: flex-end !important;
+    }
+  }
+}

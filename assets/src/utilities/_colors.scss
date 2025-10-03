@@ -1,0 +1,280 @@
+/**
+ * Color Utilities
+ * 
+ * Bootstrap-like utility classes for text colors, background colors,
+ * and border colors using the design system color palette.
+ */
+
+@use '../base/variables' as vars;
+
+// ============================================================================
+// TEXT COLOR UTILITIES
+// ============================================================================
+
+// Brand colors
+.tss-text-primary { color: var(--tss-color-primary) !important; }
+.tss-text-primary-dark { color: var(--tss-color-primary-dark) !important; }
+.tss-text-secondary { color: var(--tss-color-secondary) !important; }
+
+// Semantic colors
+.tss-text-success { color: var(--tss-color-success) !important; }
+.tss-text-warning { color: var(--tss-color-warning) !important; }
+.tss-text-error { color: var(--tss-color-error) !important; }
+.tss-text-info { color: var(--tss-color-info) !important; }
+
+// Neutral colors
+.tss-text-white { color: var(--tss-color-white) !important; }
+.tss-text-black { color: var(--tss-color-black) !important; }
+
+// Gray scale
+.tss-text-gray-50 { color: var(--tss-color-gray-50) !important; }
+.tss-text-gray-100 { color: var(--tss-color-gray-100) !important; }
+.tss-text-gray-200 { color: var(--tss-color-gray-200) !important; }
+.tss-text-gray-300 { color: var(--tss-color-gray-300) !important; }
+.tss-text-gray-400 { color: var(--tss-color-gray-400) !important; }
+.tss-text-gray-500 { color: var(--tss-color-gray-500) !important; }
+.tss-text-gray-600 { color: var(--tss-color-gray-600) !important; }
+.tss-text-gray-700 { color: var(--tss-color-gray-700) !important; }
+.tss-text-gray-800 { color: var(--tss-color-gray-800) !important; }
+.tss-text-gray-900 { color: var(--tss-color-gray-900) !important; }
+
+// Contextual text colors
+.tss-text-body { color: var(--tss-color-text) !important; }
+.tss-text-muted { color: var(--tss-color-text-muted) !important; }
+.tss-text-light { color: var(--tss-color-text-light) !important; }
+
+// WordPress admin colors
+.tss-text-wp-blue { color: #0073aa !important; }
+.tss-text-wp-green { color: #00a32a !important; }
+.tss-text-wp-red { color: #d63638 !important; }
+.tss-text-wp-orange { color: #f56e28 !important; }
+
+// ============================================================================
+// BACKGROUND COLOR UTILITIES
+// ============================================================================
+
+// Brand colors
+.tss-bg-primary { background-color: var(--tss-color-primary) !important; }
+.tss-bg-primary-dark { background-color: var(--tss-color-primary-dark) !important; }
+.tss-bg-secondary { background-color: var(--tss-color-secondary) !important; }
+
+// Semantic colors
+.tss-bg-success { background-color: var(--tss-color-success) !important; }
+.tss-bg-warning { background-color: var(--tss-color-warning) !important; }
+.tss-bg-error { background-color: var(--tss-color-error) !important; }
+.tss-bg-info { background-color: var(--tss-color-info) !important; }
+
+// Neutral colors
+.tss-bg-white { background-color: var(--tss-color-white) !important; }
+.tss-bg-black { background-color: var(--tss-color-black) !important; }
+.tss-bg-transparent { background-color: transparent !important; }
+
+// Gray scale
+.tss-bg-gray-50 { background-color: var(--tss-color-gray-50) !important; }
+.tss-bg-gray-100 { background-color: var(--tss-color-gray-100) !important; }
+.tss-bg-gray-200 { background-color: var(--tss-color-gray-200) !important; }
+.tss-bg-gray-300 { background-color: var(--tss-color-gray-300) !important; }
+.tss-bg-gray-400 { background-color: var(--tss-color-gray-400) !important; }
+.tss-bg-gray-500 { background-color: var(--tss-color-gray-500) !important; }
+.tss-bg-gray-600 { background-color: var(--tss-color-gray-600) !important; }
+.tss-bg-gray-700 { background-color: var(--tss-color-gray-700) !important; }
+.tss-bg-gray-800 { background-color: var(--tss-color-gray-800) !important; }
+.tss-bg-gray-900 { background-color: var(--tss-color-gray-900) !important; }
+
+// Contextual background colors
+.tss-bg-body { background-color: var(--tss-color-bg) !important; }
+.tss-bg-alt { background-color: var(--tss-color-bg-alt) !important; }
+
+// Light semantic backgrounds (for alerts/notices)
+.tss-bg-primary-light {
+  background-color: rgba(var(--tss-color-primary-rgb), 0.1) !important;
+}
+
+.tss-bg-success-light {
+  background-color: rgba(var(--tss-color-success-rgb), 0.1) !important;
+}
+
+.tss-bg-warning-light {
+  background-color: rgba(var(--tss-color-warning-rgb), 0.1) !important;
+}
+
+.tss-bg-error-light {
+  background-color: rgba(var(--tss-color-error-rgb), 0.1) !important;
+}
+
+.tss-bg-info-light {
+  background-color: rgba(var(--tss-color-info-rgb), 0.1) !important;
+}
+
+// WordPress admin colors
+.tss-bg-wp-blue { background-color: #0073aa !important; }
+.tss-bg-wp-green { background-color: #00a32a !important; }
+.tss-bg-wp-red { background-color: #d63638 !important; }
+.tss-bg-wp-orange { background-color: #f56e28 !important; }
+
+// ============================================================================
+// BORDER COLOR UTILITIES
+// ============================================================================
+
+// Brand colors
+.tss-border-primary { border-color: var(--tss-color-primary) !important; }
+.tss-border-primary-dark { border-color: var(--tss-color-primary-dark) !important; }
+.tss-border-secondary { border-color: var(--tss-color-secondary) !important; }
+
+// Semantic colors
+.tss-border-success { border-color: var(--tss-color-success) !important; }
+.tss-border-warning { border-color: var(--tss-color-warning) !important; }
+.tss-border-error { border-color: var(--tss-color-error) !important; }
+.tss-border-info { border-color: var(--tss-color-info) !important; }
+
+// Neutral colors
+.tss-border-white { border-color: var(--tss-color-white) !important; }
+.tss-border-black { border-color: var(--tss-color-black) !important; }
+.tss-border-transparent { border-color: transparent !important; }
+
+// Gray scale
+.tss-border-gray-50 { border-color: var(--tss-color-gray-50) !important; }
+.tss-border-gray-100 { border-color: var(--tss-color-gray-100) !important; }
+.tss-border-gray-200 { border-color: var(--tss-color-gray-200) !important; }
+.tss-border-gray-300 { border-color: var(--tss-color-gray-300) !important; }
+.tss-border-gray-400 { border-color: var(--tss-color-gray-400) !important; }
+.tss-border-gray-500 { border-color: var(--tss-color-gray-500) !important; }
+.tss-border-gray-600 { border-color: var(--tss-color-gray-600) !important; }
+.tss-border-gray-700 { border-color: var(--tss-color-gray-700) !important; }
+.tss-border-gray-800 { border-color: var(--tss-color-gray-800) !important; }
+.tss-border-gray-900 { border-color: var(--tss-color-gray-900) !important; }
+
+// Contextual border colors
+.tss-border { border-color: var(--tss-color-border) !important; }
+.tss-border-light { border-color: var(--tss-color-border-light) !important; }
+
+// ============================================================================
+// BORDER UTILITIES
+// ============================================================================
+
+// Border width
+.tss-border-0 { border: 0 !important; }
+.tss-border { border: var(--tss-border-width) solid var(--tss-color-border) !important; }
+.tss-border-1 { border: 1px solid var(--tss-color-border) !important; }
+.tss-border-2 { border: 2px solid var(--tss-color-border) !important; }
+.tss-border-3 { border: 3px solid var(--tss-color-border) !important; }
+.tss-border-4 { border: 4px solid var(--tss-color-border) !important; }
+.tss-border-5 { border: 5px solid var(--tss-color-border) !important; }
+
+// Border sides
+.tss-border-top { border-top: var(--tss-border-width) solid var(--tss-color-border) !important; }
+.tss-border-end { border-right: var(--tss-border-width) solid var(--tss-color-border) !important; }
+.tss-border-bottom { border-bottom: var(--tss-border-width) solid var(--tss-color-border) !important; }
+.tss-border-start { border-left: var(--tss-border-width) solid var(--tss-color-border) !important; }
+
+// Legacy border sides
+.tss-border-right { border-right: var(--tss-border-width) solid var(--tss-color-border) !important; }
+.tss-border-left { border-left: var(--tss-border-width) solid var(--tss-color-border) !important; }
+
+// Remove border sides
+.tss-border-top-0 { border-top: 0 !important; }
+.tss-border-end-0 { border-right: 0 !important; }
+.tss-border-bottom-0 { border-bottom: 0 !important; }
+.tss-border-start-0 { border-left: 0 !important; }
+.tss-border-right-0 { border-right: 0 !important; }
+.tss-border-left-0 { border-left: 0 !important; }
+
+// Border radius
+.tss-rounded-0 { border-radius: 0 !important; }
+.tss-rounded { border-radius: var(--tss-radius-sm) !important; }
+.tss-rounded-sm { border-radius: var(--tss-radius-sm) !important; }
+.tss-rounded-md { border-radius: var(--tss-radius-md) !important; }
+.tss-rounded-lg { border-radius: var(--tss-radius-lg) !important; }
+.tss-rounded-xl { border-radius: var(--tss-radius-xl) !important; }
+.tss-rounded-2xl { border-radius: var(--tss-radius-2xl) !important; }
+.tss-rounded-3xl { border-radius: var(--tss-radius-3xl) !important; }
+.tss-rounded-full { border-radius: var(--tss-radius-full) !important; }
+
+// Border radius sides
+.tss-rounded-top {
+  border-top-left-radius: var(--tss-radius-sm) !important;
+  border-top-right-radius: var(--tss-radius-sm) !important;
+}
+
+.tss-rounded-end {
+  border-top-right-radius: var(--tss-radius-sm) !important;
+  border-bottom-right-radius: var(--tss-radius-sm) !important;
+}
+
+.tss-rounded-bottom {
+  border-bottom-right-radius: var(--tss-radius-sm) !important;
+  border-bottom-left-radius: var(--tss-radius-sm) !important;
+}
+
+.tss-rounded-start {
+  border-top-left-radius: var(--tss-radius-sm) !important;
+  border-bottom-left-radius: var(--tss-radius-sm) !important;
+}
+
+// ============================================================================
+// GRADIENT UTILITIES
+// ============================================================================
+
+.tss-gradient-primary {
+  background: linear-gradient(135deg, var(--tss-color-primary), var(--tss-color-primary-dark)) !important;
+}
+
+.tss-gradient-success {
+  background: linear-gradient(135deg, var(--tss-color-success), rgba(var(--tss-color-success-rgb), 0.8)) !important;
+}
+
+.tss-gradient-warning {
+  background: linear-gradient(135deg, var(--tss-color-warning), rgba(var(--tss-color-warning-rgb), 0.8)) !important;
+}
+
+.tss-gradient-error {
+  background: linear-gradient(135deg, var(--tss-color-error), rgba(var(--tss-color-error-rgb), 0.8)) !important;
+}
+
+.tss-gradient-gray {
+  background: linear-gradient(135deg, var(--tss-color-gray-100), var(--tss-color-gray-300)) !important;
+}
+
+// ============================================================================
+// OPACITY UTILITIES
+// ============================================================================
+
+.tss-opacity-0 { opacity: 0 !important; }
+.tss-opacity-25 { opacity: 0.25 !important; }
+.tss-opacity-50 { opacity: 0.5 !important; }
+.tss-opacity-75 { opacity: 0.75 !important; }
+.tss-opacity-100 { opacity: 1 !important; }
+
+// ============================================================================
+// TEXT DECORATION AND TRANSFORM UTILITIES
+// ============================================================================
+
+.tss-text-decoration-none { text-decoration: none !important; }
+.tss-text-decoration-underline { text-decoration: underline !important; }
+.tss-text-decoration-line-through { text-decoration: line-through !important; }
+
+.tss-text-transform-lowercase { text-transform: lowercase !important; }
+.tss-text-transform-uppercase { text-transform: uppercase !important; }
+.tss-text-transform-capitalize { text-transform: capitalize !important; }
+
+.tss-font-weight-light { font-weight: var(--tss-font-weight-light) !important; }
+.tss-font-weight-normal { font-weight: var(--tss-font-weight-normal) !important; }
+.tss-font-weight-medium { font-weight: var(--tss-font-weight-medium) !important; }
+.tss-font-weight-semibold { font-weight: var(--tss-font-weight-semibold) !important; }
+.tss-font-weight-bold { font-weight: var(--tss-font-weight-bold) !important; }
+
+.tss-font-italic { font-style: italic !important; }
+.tss-font-normal { font-style: normal !important; }
+
+// ============================================================================
+// SHADOW UTILITIES
+// ============================================================================
+
+.tss-shadow-none { box-shadow: none !important; }
+.tss-shadow-sm { box-shadow: var(--tss-shadow-sm) !important; }
+.tss-shadow { box-shadow: var(--tss-shadow-md) !important; }
+.tss-shadow-md { box-shadow: var(--tss-shadow-md) !important; }
+.tss-shadow-lg { box-shadow: var(--tss-shadow-lg) !important; }
+.tss-shadow-xl { box-shadow: var(--tss-shadow-xl) !important; }
+.tss-shadow-2xl { box-shadow: var(--tss-shadow-2xl) !important; }
+.tss-shadow-inner { box-shadow: var(--tss-shadow-inner) !important; }

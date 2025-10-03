@@ -26,6 +26,12 @@ framework\register_plugin_settings($plugin, [
         framework\render_features_settings_page($plugin);
       }
     ],
+    'test' => [
+      'title' => 'Test',
+      'callback' => function() {
+        ?>This is a test tab.<?php
+      }
+    ],
   ],
 
   'features' => [

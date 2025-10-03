@@ -1,0 +1,299 @@
+/**
+ * Display Utilities
+ * 
+ * Bootstrap-like utility classes for display properties, visibility, 
+ * positioning, and layout control.
+ */
+
+@use '../base/variables' as vars;
+
+// ============================================================================
+// DISPLAY UTILITIES
+// ============================================================================
+
+.tss-d-none { display: none !important; }
+.tss-d-inline { display: inline !important; }
+.tss-d-inline-block { display: inline-block !important; }
+.tss-d-block { display: block !important; }
+.tss-d-grid { display: grid !important; }
+.tss-d-table { display: table !important; }
+.tss-d-table-row { display: table-row !important; }
+.tss-d-table-cell { display: table-cell !important; }
+.tss-d-flex { display: flex !important; }
+.tss-d-inline-flex { display: inline-flex !important; }
+
+// ============================================================================
+// VISIBILITY UTILITIES
+// ============================================================================
+
+.tss-visible { visibility: visible !important; }
+.tss-invisible { visibility: hidden !important; }
+
+// Screen reader utilities
+.tss-sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.tss-sr-only-focusable {
+  &:active,
+  &:focus {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+    clip: auto !important;
+    white-space: normal !important;
+  }
+}
+
+// ============================================================================
+// POSITION UTILITIES
+// ============================================================================
+
+.tss-position-static { position: static !important; }
+.tss-position-relative { position: relative !important; }
+.tss-position-absolute { position: absolute !important; }
+.tss-position-fixed { position: fixed !important; }
+.tss-position-sticky { position: sticky !important; }
+
+// Position values
+.tss-top-0 { top: 0 !important; }
+.tss-top-50 { top: 50% !important; }
+.tss-top-100 { top: 100% !important; }
+.tss-bottom-0 { bottom: 0 !important; }
+.tss-bottom-50 { bottom: 50% !important; }
+.tss-bottom-100 { bottom: 100% !important; }
+.tss-start-0 { left: 0 !important; }
+.tss-start-50 { left: 50% !important; }
+.tss-start-100 { left: 100% !important; }
+.tss-end-0 { right: 0 !important; }
+.tss-end-50 { right: 50% !important; }
+.tss-end-100 { right: 100% !important; }
+
+// Legacy positioning (for older browser support)
+.tss-left-0 { left: 0 !important; }
+.tss-left-50 { left: 50% !important; }
+.tss-left-100 { left: 100% !important; }
+.tss-right-0 { right: 0 !important; }
+.tss-right-50 { right: 50% !important; }
+.tss-right-100 { right: 100% !important; }
+
+// Transform translate utilities for centering
+.tss-translate-middle {
+  transform: translate(-50%, -50%) !important;
+}
+
+.tss-translate-middle-x {
+  transform: translateX(-50%) !important;
+}
+
+.tss-translate-middle-y {
+  transform: translateY(-50%) !important;
+}
+
+// ============================================================================
+// OVERFLOW UTILITIES
+// ============================================================================
+
+.tss-overflow-auto { overflow: auto !important; }
+.tss-overflow-hidden { overflow: hidden !important; }
+.tss-overflow-visible { overflow: visible !important; }
+.tss-overflow-scroll { overflow: scroll !important; }
+
+.tss-overflow-x-auto { overflow-x: auto !important; }
+.tss-overflow-x-hidden { overflow-x: hidden !important; }
+.tss-overflow-x-visible { overflow-x: visible !important; }
+.tss-overflow-x-scroll { overflow-x: scroll !important; }
+
+.tss-overflow-y-auto { overflow-y: auto !important; }
+.tss-overflow-y-hidden { overflow-y: hidden !important; }
+.tss-overflow-y-visible { overflow-y: visible !important; }
+.tss-overflow-y-scroll { overflow-y: scroll !important; }
+
+// ============================================================================
+// FLEXBOX UTILITIES
+// ============================================================================
+
+// Flex direction
+.tss-flex-row { flex-direction: row !important; }
+.tss-flex-column { flex-direction: column !important; }
+.tss-flex-row-reverse { flex-direction: row-reverse !important; }
+.tss-flex-column-reverse { flex-direction: column-reverse !important; }
+
+// Flex wrap
+.tss-flex-wrap { flex-wrap: wrap !important; }
+.tss-flex-nowrap { flex-wrap: nowrap !important; }
+.tss-flex-wrap-reverse { flex-wrap: wrap-reverse !important; }
+
+// Justify content
+.tss-justify-content-start { justify-content: flex-start !important; }
+.tss-justify-content-end { justify-content: flex-end !important; }
+.tss-justify-content-center { justify-content: center !important; }
+.tss-justify-content-between { justify-content: space-between !important; }
+.tss-justify-content-around { justify-content: space-around !important; }
+.tss-justify-content-evenly { justify-content: space-evenly !important; }
+
+// Align items
+.tss-align-items-start { align-items: flex-start !important; }
+.tss-align-items-end { align-items: flex-end !important; }
+.tss-align-items-center { align-items: center !important; }
+.tss-align-items-baseline { align-items: baseline !important; }
+.tss-align-items-stretch { align-items: stretch !important; }
+
+// Align content
+.tss-align-content-start { align-content: flex-start !important; }
+.tss-align-content-end { align-content: flex-end !important; }
+.tss-align-content-center { align-content: center !important; }
+.tss-align-content-between { align-content: space-between !important; }
+.tss-align-content-around { align-content: space-around !important; }
+.tss-align-content-stretch { align-content: stretch !important; }
+
+// Align self
+.tss-align-self-auto { align-self: auto !important; }
+.tss-align-self-start { align-self: flex-start !important; }
+.tss-align-self-end { align-self: flex-end !important; }
+.tss-align-self-center { align-self: center !important; }
+.tss-align-self-baseline { align-self: baseline !important; }
+.tss-align-self-stretch { align-self: stretch !important; }
+
+// Flex grow and shrink
+.tss-flex-fill { flex: 1 1 auto !important; }
+.tss-flex-grow-0 { flex-grow: 0 !important; }
+.tss-flex-grow-1 { flex-grow: 1 !important; }
+.tss-flex-shrink-0 { flex-shrink: 0 !important; }
+.tss-flex-shrink-1 { flex-shrink: 1 !important; }
+
+// ============================================================================
+// GRID UTILITIES
+// ============================================================================
+
+// Grid template columns
+.tss-grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)) !important; }
+.tss-grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+.tss-grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+.tss-grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
+.tss-grid-cols-5 { grid-template-columns: repeat(5, minmax(0, 1fr)) !important; }
+.tss-grid-cols-6 { grid-template-columns: repeat(6, minmax(0, 1fr)) !important; }
+.tss-grid-cols-12 { grid-template-columns: repeat(12, minmax(0, 1fr)) !important; }
+
+// Grid gap
+.tss-gap-0 { gap: 0 !important; }
+.tss-gap-1 { gap: var(--tss-spacing-1) !important; }
+.tss-gap-2 { gap: var(--tss-spacing-2) !important; }
+.tss-gap-3 { gap: var(--tss-spacing-3) !important; }
+.tss-gap-4 { gap: var(--tss-spacing-4) !important; }
+.tss-gap-5 { gap: var(--tss-spacing-5) !important; }
+.tss-gap-6 { gap: var(--tss-spacing-6) !important; }
+
+// Grid column span
+.tss-col-span-1 { grid-column: span 1 / span 1 !important; }
+.tss-col-span-2 { grid-column: span 2 / span 2 !important; }
+.tss-col-span-3 { grid-column: span 3 / span 3 !important; }
+.tss-col-span-4 { grid-column: span 4 / span 4 !important; }
+.tss-col-span-5 { grid-column: span 5 / span 5 !important; }
+.tss-col-span-6 { grid-column: span 6 / span 6 !important; }
+.tss-col-span-full { grid-column: 1 / -1 !important; }
+
+// ============================================================================
+// FLOAT UTILITIES
+// ============================================================================
+
+.tss-float-start { float: left !important; }
+.tss-float-end { float: right !important; }
+.tss-float-none { float: none !important; }
+
+// Legacy float utilities
+.tss-float-left { float: left !important; }
+.tss-float-right { float: right !important; }
+
+// ============================================================================
+// OBJECT FIT UTILITIES
+// ============================================================================
+
+.tss-object-contain { object-fit: contain !important; }
+.tss-object-cover { object-fit: cover !important; }
+.tss-object-fill { object-fit: fill !important; }
+.tss-object-scale { object-fit: scale-down !important; }
+.tss-object-none { object-fit: none !important; }
+
+// ============================================================================
+// Z-INDEX UTILITIES
+// ============================================================================
+
+.tss-z-n1 { z-index: -1 !important; }
+.tss-z-0 { z-index: 0 !important; }
+.tss-z-1 { z-index: 1 !important; }
+.tss-z-2 { z-index: 2 !important; }
+.tss-z-3 { z-index: 3 !important; }
+.tss-z-dropdown { z-index: var(--tss-z-dropdown) !important; }
+.tss-z-sticky { z-index: var(--tss-z-sticky) !important; }
+.tss-z-fixed { z-index: var(--tss-z-fixed) !important; }
+.tss-z-modal-backdrop { z-index: var(--tss-z-modal-backdrop) !important; }
+.tss-z-modal { z-index: var(--tss-z-modal) !important; }
+.tss-z-popover { z-index: var(--tss-z-popover) !important; }
+.tss-z-tooltip { z-index: var(--tss-z-tooltip) !important; }
+
+// ============================================================================
+// RESPONSIVE DISPLAY UTILITIES
+// ============================================================================
+
+@mixin responsive-display($breakpoint-name) {
+  .tss-#{$breakpoint-name}\:d-none { display: none !important; }
+  .tss-#{$breakpoint-name}\:d-inline { display: inline !important; }
+  .tss-#{$breakpoint-name}\:d-inline-block { display: inline-block !important; }
+  .tss-#{$breakpoint-name}\:d-block { display: block !important; }
+  .tss-#{$breakpoint-name}\:d-grid { display: grid !important; }
+  .tss-#{$breakpoint-name}\:d-table { display: table !important; }
+  .tss-#{$breakpoint-name}\:d-table-row { display: table-row !important; }
+  .tss-#{$breakpoint-name}\:d-table-cell { display: table-cell !important; }
+  .tss-#{$breakpoint-name}\:d-flex { display: flex !important; }
+  .tss-#{$breakpoint-name}\:d-inline-flex { display: inline-flex !important; }
+  
+  // Flex utilities
+  .tss-#{$breakpoint-name}\:flex-row { flex-direction: row !important; }
+  .tss-#{$breakpoint-name}\:flex-column { flex-direction: column !important; }
+  .tss-#{$breakpoint-name}\:flex-row-reverse { flex-direction: row-reverse !important; }
+  .tss-#{$breakpoint-name}\:flex-column-reverse { flex-direction: column-reverse !important; }
+  
+  .tss-#{$breakpoint-name}\:justify-content-start { justify-content: flex-start !important; }
+  .tss-#{$breakpoint-name}\:justify-content-end { justify-content: flex-end !important; }
+  .tss-#{$breakpoint-name}\:justify-content-center { justify-content: center !important; }
+  .tss-#{$breakpoint-name}\:justify-content-between { justify-content: space-between !important; }
+  .tss-#{$breakpoint-name}\:justify-content-around { justify-content: space-around !important; }
+  .tss-#{$breakpoint-name}\:justify-content-evenly { justify-content: space-evenly !important; }
+  
+  .tss-#{$breakpoint-name}\:align-items-start { align-items: flex-start !important; }
+  .tss-#{$breakpoint-name}\:align-items-end { align-items: flex-end !important; }
+  .tss-#{$breakpoint-name}\:align-items-center { align-items: center !important; }
+  .tss-#{$breakpoint-name}\:align-items-baseline { align-items: baseline !important; }
+  .tss-#{$breakpoint-name}\:align-items-stretch { align-items: stretch !important; }
+}
+
+// Generate responsive utilities
+@media (min-width: vars.$breakpoint-sm) {
+  @include responsive-display(sm);
+}
+
+@media (min-width: vars.$breakpoint-md) {
+  @include responsive-display(md);
+}
+
+@media (min-width: vars.$breakpoint-lg) {
+  @include responsive-display(lg);
+}
+
+@media (min-width: vars.$breakpoint-xl) {
+  @include responsive-display(xl);
+}
+
+@media (min-width: vars.$breakpoint-xxl) {
+  @include responsive-display(xxl);
+}

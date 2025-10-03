@@ -1,0 +1,155 @@
+/**
+ * Layout Components
+ * 
+ * Header layout styles for admin areas.
+ */
+
+@use "../base/mixins" as *;
+
+// ============================================================================
+// ADMIN HEADER
+// ============================================================================
+
+.tss-header {
+  background-color: var(--tss-color-bg);
+  border-bottom: var(--tss-border-width) solid var(--tss-color-border);
+  padding: var(--tss-spacing-base) 0;
+  
+  &__container {
+    @include container();
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: var(--tss-spacing-sm);
+    text-decoration: none;
+    color: var(--tss-color-text);
+    
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  
+  &__logo {
+    width: 32px;
+    height: 32px;
+  }
+  
+  &__title {
+    font-size: var(--tss-font-size-xl);
+    font-weight: var(--tss-font-weight-semibold);
+    margin: 0;
+  }
+  
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: var(--tss-spacing-base);
+  }
+  
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--tss-spacing-sm);
+  }
+}
+
+// ============================================================================
+// PAGE HEADER
+// ============================================================================
+
+.tss-page-header {
+  margin-bottom: var(--tss-spacing-xl);
+  padding-bottom: var(--tss-spacing-lg);
+  border-bottom: var(--tss-border-width) solid var(--tss-color-border-light);
+  
+  &__container {
+    @include container();
+  }
+  
+  &__content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--tss-spacing-lg);
+    
+    @include media-down(md) {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+  
+  &__main {
+    flex: 1;
+  }
+  
+  &__title {
+    font-size: var(--tss-font-size-3xl);
+    font-weight: var(--tss-font-weight-bold);
+    margin: 0 0 var(--tss-spacing-sm);
+    color: var(--tss-color-text);
+  }
+  
+  &__description {
+    color: var(--tss-color-text-muted);
+    margin: 0 0 var(--tss-spacing-base);
+    max-width: 600px;
+  }
+  
+  &__breadcrumbs {
+    margin-bottom: var(--tss-spacing-base);
+  }
+  
+  &__actions {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--tss-spacing-sm);
+    flex-shrink: 0;
+    
+    @include media-down(md) {
+      align-self: stretch;
+      justify-content: flex-end;
+    }
+  }
+}
+
+// ============================================================================
+// BREADCRUMBS
+// ============================================================================
+
+.tss-breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: var(--tss-spacing-xs);
+  font-size: var(--tss-font-size-sm);
+  color: var(--tss-color-text-muted);
+  
+  &__item {
+    display: flex;
+    align-items: center;
+    
+    &:not(:last-child)::after {
+      content: '/';
+      margin-left: var(--tss-spacing-xs);
+      color: var(--tss-color-border-dark);
+    }
+  }
+  
+  &__link {
+    color: var(--tss-color-primary);
+    text-decoration: none;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  
+  &__current {
+    color: var(--tss-color-text);
+    font-weight: var(--tss-font-weight-medium);
+  }
+}
